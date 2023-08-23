@@ -3,15 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_basic_2.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_cars.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_events.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_profile.xml" value="0.1755" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_signal_online.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_btn_person_code.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_item_bottom_navigate.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_header_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_history.xml" value="0.32105263157894737" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_title_history.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_cars.xml" value="0.12090163934426229" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_events.xml" value="0.12090163934426229" />
-        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_profile.xml" value="0.536" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/memu.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
       </map>

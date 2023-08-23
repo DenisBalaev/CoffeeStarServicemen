@@ -16,6 +16,6 @@
     <item
         android:id="@+id/eventsFragment"
         android:icon="@drawable/ic_events"
-        android:title="Все события"
+        android:title="События"
         />
 </menu>

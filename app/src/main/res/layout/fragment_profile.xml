@@ -187,6 +187,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btn_code_update"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Показать код"
