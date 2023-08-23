@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeestarservicemen.adapter.HistoryAdapter
-import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
 import com.example.coffeestarservicemen.databinding.FragmentEventsBinding
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistory
 import com.example.coffeestarservicemen.model.ItemHistory
 
 
@@ -39,8 +39,47 @@ class EventsFragment : Fragment() {
                 message = "Скоро закончится вода"
             ),
             ItemHistory(
-                isHeader = false,
                 date = "Вчера",
+                time = "18:22",
+                imageBasic = R.drawable.ic_basic_error,
+                imageSignalStatus = R.drawable.ic_signal_online,
+                numberCar = "b952 0029",
+                message = "Drop lid error"
+            ),
+            ItemHistory(
+                date = "Вчера",
+                time = "11:22",
+                imageBasic = R.drawable.ic_basic_error,
+                imageSignalStatus = R.drawable.ic_signal_online,
+                numberCar = "b952 0029",
+                message = "Drop lid error"
+            ),
+            ItemHistory(
+                date = "10.05.2023",
+                time = "18:22",
+                imageBasic = R.drawable.ic_basic_error,
+                imageSignalStatus = R.drawable.ic_signal_online,
+                numberCar = "b952 0029",
+                message = "Drop lid error"
+            ),
+            ItemHistory(
+                date = "10.05.2023",
+                time = "11:22",
+                imageBasic = R.drawable.ic_basic_error,
+                imageSignalStatus = R.drawable.ic_signal_online,
+                numberCar = "b952 0029",
+                message = "Drop lid error"
+            ),
+            ItemHistory(
+                date = "11.05.2023",
+                time = "18:22",
+                imageBasic = R.drawable.ic_basic_error,
+                imageSignalStatus = R.drawable.ic_signal_online,
+                numberCar = "b952 0029",
+                message = "Drop lid error"
+            ),
+            ItemHistory(
+                date = "11.05.2023",
                 time = "11:22",
                 imageBasic = R.drawable.ic_basic_error,
                 imageSignalStatus = R.drawable.ic_signal_online,
@@ -49,7 +88,11 @@ class EventsFragment : Fragment() {
             )
         )
 
+
+
+        val space = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_History)
         binding.rvHistory.apply {
+            addItemDecoration(CustomItemDecorationHistory(space))
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = HistoryAdapter(items = list)
