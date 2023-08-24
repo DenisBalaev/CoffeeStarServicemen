@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -43,7 +43,10 @@ class ProfileFragment : Fragment() {
             bottomSheetDialog.show()
         }
 
-        bottomSheetDialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        val bottomSheetInternal: View? = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
+        if (bottomSheetInternal != null) {
+            BottomSheetBehavior.from(bottomSheetInternal).isDraggable = false
+        }
     }
 
     private fun createDialog(){
@@ -53,6 +56,7 @@ class ProfileFragment : Fragment() {
         }
 
         bottomSheetDialog.setContentView(sheetView)
+        bottomSheetDialog.setCancelable(false)
     }
 
     private fun blur(){
