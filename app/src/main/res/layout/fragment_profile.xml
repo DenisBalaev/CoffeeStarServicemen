@@ -176,13 +176,13 @@
                         android:textColor="@color/gray_8B8B8B"/>
 
                     <ImageView
-                        android:id="@+id/tv_history"
+                        android:id="@+id/iv_history"
                         android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_tick_bottom"
-                        android:scaleType="fitXY"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="2dp"/>
+                        android:layout_marginStart="2dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_tick_bottom" />
 
                 </LinearLayout>
 

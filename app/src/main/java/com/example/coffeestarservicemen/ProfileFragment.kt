@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var bottomSheetDialog:BottomSheetDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -31,6 +35,24 @@ class ProfileFragment : Fragment() {
                 noBlur()
             }
         }
+
+        bottomSheetDialog = BottomSheetDialog(requireContext())
+        createDialog()
+
+        binding.ivHistory.setOnClickListener {
+            bottomSheetDialog.show()
+        }
+
+        bottomSheetDialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+    }
+
+    private fun createDialog(){
+        val sheetView = layoutInflater.inflate(R.layout.bottom_dialog_history_code,null, false)
+        sheetView.findViewById<ImageView>(R.id.iv_close).setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.setContentView(sheetView)
     }
 
     private fun blur(){

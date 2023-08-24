@@ -88,8 +88,6 @@ class EventsFragment : Fragment() {
             )
         )
 
-
-
         val space = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_History)
         binding.rvHistory.apply {
             addItemDecoration(CustomItemDecorationHistory(space))
