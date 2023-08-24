@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragment
 import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var bottomSheetDialog:BottomSheetDialog
+    private lateinit var bottomSheetDialog:HistoryCodeBottomSheetFragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -36,27 +34,11 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        bottomSheetDialog = BottomSheetDialog(requireContext())
-        createDialog()
+        bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
         binding.ivHistory.setOnClickListener {
-            bottomSheetDialog.show()
+            bottomSheetDialog.show(childFragmentManager,bottomSheetDialog.tag)
         }
-
-        val bottomSheetInternal: View? = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
-        if (bottomSheetInternal != null) {
-            BottomSheetBehavior.from(bottomSheetInternal).isDraggable = false
-        }
-    }
-
-    private fun createDialog(){
-        val sheetView = layoutInflater.inflate(R.layout.bottom_dialog_history_code,null, false)
-        sheetView.findViewById<ImageView>(R.id.iv_close).setOnClickListener {
-            bottomSheetDialog.dismiss()
-        }
-
-        bottomSheetDialog.setContentView(sheetView)
-        bottomSheetDialog.setCancelable(false)
     }
 
     private fun blur(){

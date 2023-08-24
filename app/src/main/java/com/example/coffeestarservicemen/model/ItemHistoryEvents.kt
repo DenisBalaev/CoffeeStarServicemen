@@ -1,6 +1,6 @@
 package com.example.coffeestarservicemen.model
 
-data class ItemHistory(
+data class ItemHistoryEvents(
     var isHeader:Boolean = true,
     val date:String,
     val time:String,

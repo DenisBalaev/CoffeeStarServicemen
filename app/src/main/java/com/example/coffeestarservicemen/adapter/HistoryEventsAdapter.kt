@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.model.ItemHistory
+import com.example.coffeestarservicemen.model.ItemHistoryEvents
 
-class HistoryAdapter (
-    private val items: List<ItemHistory>
+class HistoryEventsAdapter (
+    private val items: List<ItemHistoryEvents>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -58,7 +58,7 @@ class HistoryAdapter (
         private val time = view.findViewById<TextView>(R.id.tv_time)
         private val message = view.findViewById<TextView>(R.id.tv_message)
 
-        fun bind(item:ItemHistory) {
+        fun bind(item:ItemHistoryEvents) {
             header.text = item.date
             imageBasic.setImageResource(item.imageBasic)
             imageStatusSignal.setImageResource(item.imageSignalStatus)
@@ -75,7 +75,7 @@ class HistoryAdapter (
         private val time = view.findViewById<TextView>(R.id.tv_time)
         private val message = view.findViewById<TextView>(R.id.tv_message)
 
-        fun bind(item: ItemHistory) {
+        fun bind(item: ItemHistoryEvents) {
             imageBasic.setImageResource(item.imageBasic)
             imageStatusSignal.setImageResource(item.imageSignalStatus)
             numberCar.text = item.numberCar
