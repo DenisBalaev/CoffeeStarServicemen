@@ -36,7 +36,7 @@ class ProfileFragment : Fragment() {
 
         bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
-        binding.ivHistory.setOnClickListener {
+        binding.containerHistory.setOnClickListener {
             bottomSheetDialog.show(childFragmentManager,bottomSheetDialog.tag)
         }
     }
