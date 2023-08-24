@@ -6,7 +6,7 @@
     tools:context=".EventsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_history"
+        android:id="@+id/rv_history_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black_101010"/>
