@@ -5,11 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.coffeestarservicemen.adapter.FiltrationAdapter
+import com.example.coffeestarservicemen.adapter.FiltrationCarAdapter
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFilter
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryEvents
 
 
 class CarsFragment : Fragment(R.layout.fragment_cars) {
@@ -23,7 +22,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         val listFiltration = listOf("Все","Закрыты","С ошибками","Продукты заканчиваются")
-        val spaceRvFiltration = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration)
+        val spaceRvFiltration = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_Car)
 
         with(binding){
             spinnerSorting.apply {
@@ -35,7 +34,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
                 addItemDecoration(CustomItemDecorationFilter(spaceRvFiltration))
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
-                adapter = FiltrationAdapter(items = listFiltration)
+                adapter = FiltrationCarAdapter(items = listFiltration)
             }
         }
 

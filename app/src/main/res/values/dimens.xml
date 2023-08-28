@@ -3,5 +3,5 @@
     <dimen name="marginTop_recyclerView_HistoryEvents">8dp</dimen>
     <dimen name="marginTop_recyclerView_HistoryCode">12dp</dimen>
 
-    <dimen name="marginEnd_recyclerView_Filtration">10dp</dimen>
+    <dimen name="marginEnd_recyclerView_Filtration_Car">10dp</dimen>
 </resources>

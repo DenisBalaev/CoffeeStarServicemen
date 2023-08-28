@@ -10,9 +10,9 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
 
-class FiltrationAdapter(
+class FiltrationCarAdapter(
     private val items:List<String>
-): RecyclerView.Adapter<FiltrationAdapter.ItemFiltrationViewHolder>() {
+): RecyclerView.Adapter<FiltrationCarAdapter.ItemFiltrationViewHolder>() {
 
     private var selectedPosition = 0
 
