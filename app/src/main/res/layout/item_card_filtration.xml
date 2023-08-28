@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="100dp"
+    android:backgroundTint="@color/gray_242323"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_nam_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Все"
+            android:textSize="15sp"
+            android:textColor="@color/gray_8B8B8B"
+            android:layout_marginVertical="8dp"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_button"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="6dp"
+            android:button="@drawable/ic_tick_bottom"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
