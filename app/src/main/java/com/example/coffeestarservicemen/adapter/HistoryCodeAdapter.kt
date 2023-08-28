@@ -26,7 +26,7 @@ class HistoryCodeAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMainMenuViewHolder {
         return ItemMainMenuViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_history_code, parent, false)
+                .inflate(R.layout.item_history_code_bottom_sheet, parent, false)
         )
     }
 

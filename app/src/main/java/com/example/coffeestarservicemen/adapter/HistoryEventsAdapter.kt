@@ -31,9 +31,9 @@ class HistoryEventsAdapter (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TYPE_HEADER) {
-            HeaderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_item_header_history, parent, false))
+            HeaderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card_header_history_events, parent, false))
         } else {
-            CardViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_item_history, parent, false))
+            CardViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card_history_events, parent, false))
         }
     }
 
