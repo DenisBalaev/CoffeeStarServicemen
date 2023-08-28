@@ -6,19 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.adapter.HistoryEventsAdapter
 import com.example.coffeestarservicemen.databinding.FragmentEventsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryEvents
 import com.example.coffeestarservicemen.model.ItemHistoryEvents
 
 
-class EventsFragment : Fragment() {
-    private lateinit var binding: FragmentEventsBinding
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentEventsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class EventsFragment : Fragment(R.layout.fragment_events) {
+    private val binding by viewBinding(FragmentEventsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val list = mutableListOf<ItemHistoryEvents>(

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.HistoryCodeAdapter
 import com.example.coffeestarservicemen.databinding.BottomDialogHistoryCodeBinding
@@ -13,20 +14,13 @@ import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryCo
 import com.example.coffeestarservicemen.model.ItemsHistoryCode
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment() {
+class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment(R.layout.bottom_dialog_history_code) {
 
-    private lateinit var binding : BottomDialogHistoryCodeBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = BottomDialogHistoryCodeBinding.inflate(layoutInflater)
-        isCancelable = false
-        return binding.root
-    }
+    private val binding by viewBinding(BottomDialogHistoryCodeBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        isCancelable = false
+
         binding.ivClose.setOnClickListener {
             dismiss()
         }
@@ -37,7 +31,7 @@ class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment() {
             ItemsHistoryCode(date = "9 апреля", code = "RQ5 8CP")
         )
 
-        repeat(6){
+        repeat(3){
             list.addAll(list)
         }
 

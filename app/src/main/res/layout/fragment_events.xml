@@ -9,6 +9,7 @@
         android:id="@+id/rv_history_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         android:background="@color/black_101010"/>
 
 </FrameLayout>

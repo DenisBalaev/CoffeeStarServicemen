@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudio/SDKAndroid/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio/SDKAndroid/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/button_transition.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_basic_2.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_bottom_dialog_close.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_cars.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_events.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_profile.xml" value="0.1755" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_signal_lock.xml" value="0.2595" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_signal_offline.xml" value="0.2595" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_signal_online.xml" value="0.1755" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/motion_scene.xml" value="0.1755" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_bottom_dialog_history_code.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_botton_dialog_history_code.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_btn_person_code.xml" value="0.1755" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_searth.xml" value="0.2585" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_item_bottom_navigate.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/vertical_divider_history_code.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
@@ -18,13 +26,15 @@
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_header_history.xml" value="0.152" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_history.xml" value="0.32105263157894737" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/card_item_title_history.xml" value="0.25416666666666665" />
-        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_cars.xml" value="0.176" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_cars.xml" value="0.264" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_events.xml" value="0.12090163934426229" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_history_code_bottom_sheet.xml" value="0.25416666666666665" />
-        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/fragment_profile.xml" value="0.3238095238095238" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_history_code.xml" value="0.253125" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_spinner_title.xml" value="0.253125" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/memu.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/xml/motion_scene.xml" value="0.253125" />
       </map>
     </option>
   </component>
