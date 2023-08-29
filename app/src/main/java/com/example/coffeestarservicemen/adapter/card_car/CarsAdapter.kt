@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationErrorCardCar
 import com.example.coffeestarservicemen.decoration.CustomItemFillingCardCar
 import com.example.coffeestarservicemen.model.ItemCar
 
@@ -26,6 +28,7 @@ class CarsAdapter(
         private val tvBriefStatusCar = view.findViewById<TextView>(R.id.tv_brief_status_car)
         private val tvAddress = view.findViewById<TextView>(R.id.tv_address)
         private val tvDistance = view.findViewById<TextView>(R.id.tv_distance)
+        private val cardCar = view.findViewById<CardView>(R.id.card_car)
         val tvTime = view.findViewById<TextView>(R.id.tv_time)
         val containerDiscovery = view.findViewById<RelativeLayout>(R.id.container_discovery)
 
@@ -49,12 +52,34 @@ class CarsAdapter(
                 rvError.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
+                val listError = item.listError.toMutableList()
+                rvError.apply {
+                    setHasFixedSize(true)
+                    addItemDecoration(CustomItemDecorationErrorCardCar(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
+                    layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
+                    adapter = ErrorAdapterCardCar(listError)
+                    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                            super.onScrolled(recyclerView, dx, dy)
+
+                            val lm = (recyclerView.layoutManager as LinearLayoutManager)
+                            val lastVisibleItem = lm.findLastVisibleItemPosition()
+                            val itemsOffScreen = lm.itemCount - lastVisibleItem
+                            listError[lastVisibleItem] = "+$itemsOffScreen";
+                            recyclerView.adapter?.notifyItemChanged(lastVisibleItem);
+                        }
+                    })
+                }
             }
 
             tvAddress.text = item.address
             tvDistance.text = item.distance
 
             itemView.setOnClickListener {
+                listener(item)
+            }
+
+            cardCar.setOnClickListener {
                 listener(item)
             }
         }

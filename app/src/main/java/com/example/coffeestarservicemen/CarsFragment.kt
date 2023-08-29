@@ -2,6 +2,7 @@ package com.example.coffeestarservicemen
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -83,7 +84,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             rvCars.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CarsAdapter(items = listCars){
-
+                    Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
                 }
             }
         }
