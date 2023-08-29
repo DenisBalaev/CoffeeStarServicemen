@@ -10,7 +10,7 @@ import com.example.coffeestarservicemen.adapter.card_car.CarsAdapter
 import com.example.coffeestarservicemen.adapter.card_car.FiltrationCarAdapter
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationFilter
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
 import com.example.coffeestarservicemen.model.ItemCar
 import com.example.coffeestarservicemen.model.ItemFilling
 
@@ -76,7 +76,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             }
 
             rvFiltration.apply {
-                addItemDecoration(CustomItemDecorationFilter(spaceRvFiltration))
+                addItemDecoration(CustomItemDecorationLeft(spaceRvFiltration))
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = FiltrationCarAdapter(items = listFiltration)
             }

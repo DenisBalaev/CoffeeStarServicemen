@@ -10,8 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationErrorCardCar
-import com.example.coffeestarservicemen.decoration.CustomItemFillingCardCar
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationBottom
 import com.example.coffeestarservicemen.model.ItemCar
 
 class CarsAdapter(
@@ -42,7 +42,7 @@ class CarsAdapter(
             }else{
                 tvBriefStatusCar.visibility = View.GONE
                 rvFilling.apply {
-                    addItemDecoration(CustomItemFillingCardCar(itemView.context.resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
+                    addItemDecoration(CustomItemDecorationBottom(itemView.context.resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
                     layoutManager = LinearLayoutManager(itemView.context)
                     adapter = FillingCardCarAdapter(item.listFilling)
                 }
@@ -55,7 +55,7 @@ class CarsAdapter(
                 val listError = item.listError.toMutableList()
                 rvError.apply {
                     setHasFixedSize(true)
-                    addItemDecoration(CustomItemDecorationErrorCardCar(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
+                    addItemDecoration(CustomItemDecorationLeft(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
                     layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
                     adapter = ErrorAdapterCardCar(listError)
                     addOnScrollListener(object : RecyclerView.OnScrollListener() {
