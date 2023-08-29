@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomItemDecorationHistoryCode(private val space: Int,private val divider: Drawable): RecyclerView.ItemDecoration()  {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        outRect.top = space
+        val position = parent.getChildAdapterPosition(view)
+        outRect.top = if (position != 0) space else 0
     }
 
     override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {

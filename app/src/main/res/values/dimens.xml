@@ -4,4 +4,6 @@
     <dimen name="marginTop_recyclerView_HistoryCode">12dp</dimen>
 
     <dimen name="marginEnd_recyclerView_Filtration_Car">10dp</dimen>
+
+    <dimen name="marginBottom_recyclerView_Filling_Cad_Car">12dp</dimen>
 </resources>

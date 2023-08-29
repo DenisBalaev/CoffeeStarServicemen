@@ -88,7 +88,6 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
         binding.rvHistoryEvents.apply {
             addItemDecoration(CustomItemDecorationHistoryEvents(space))
             layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
             adapter = HistoryEventsAdapter(items = list)
         }
     }

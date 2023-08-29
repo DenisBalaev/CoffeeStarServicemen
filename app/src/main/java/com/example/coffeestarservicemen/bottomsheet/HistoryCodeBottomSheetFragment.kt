@@ -41,7 +41,6 @@ class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment(R.layout.bottom
         binding.rvCodeHistory.apply {
             dividerDrawable?.let { CustomItemDecorationHistoryCode(space = space, divider = it) }?.let { addItemDecoration(it) }
             layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
             adapter =  HistoryCodeAdapter(items = list)
         }
     }
