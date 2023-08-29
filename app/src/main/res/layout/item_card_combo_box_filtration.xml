@@ -7,15 +7,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tv_nam_filter"
+    <Spinner
+        android:id="@+id/spinner_filtration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Закрыты"
-        android:textSize="15sp"
-        android:textColor="@color/gray_8B8B8B"
         android:layout_marginVertical="8dp"
         android:layout_marginHorizontal="16dp"
+        android:background="@null"
         />
 
 </androidx.cardview.widget.CardView>

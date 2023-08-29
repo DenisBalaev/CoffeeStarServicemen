@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/gray_1B1818"
     app:cardCornerRadius="32dp"
-    android:layout_marginBottom="12dp"
-    >
+    android:layout_marginBottom="12dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

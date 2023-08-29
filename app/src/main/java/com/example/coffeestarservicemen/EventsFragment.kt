@@ -15,75 +15,74 @@ import com.example.coffeestarservicemen.model.ItemHistoryEvents
 
 class EventsFragment : Fragment(R.layout.fragment_events) {
     private val binding by viewBinding(FragmentEventsBinding::bind)
+    private val list = mutableListOf<ItemHistoryEvents>(
+        ItemHistoryEvents(
+            date = "Сегодня",
+            time = "15:03",
+            imageBasic = R.drawable.ic_basic_2,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Скоро закончится сухое молоко"
+        ),
+        ItemHistoryEvents(
+            date = "Сегодня",
+            time = "14:22",
+            imageBasic = R.drawable.ic_basic_3,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Скоро закончится вода"
+        ),
+        ItemHistoryEvents(
+            date = "Вчера",
+            time = "18:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        ),
+        ItemHistoryEvents(
+            date = "Вчера",
+            time = "11:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        ),
+        ItemHistoryEvents(
+            date = "10.05.2023",
+            time = "18:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        ),
+        ItemHistoryEvents(
+            date = "10.05.2023",
+            time = "11:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        ),
+        ItemHistoryEvents(
+            date = "11.05.2023",
+            time = "18:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        ),
+        ItemHistoryEvents(
+            date = "11.05.2023",
+            time = "11:22",
+            imageBasic = R.drawable.ic_basic_error,
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0029",
+            message = "Drop lid error"
+        )
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val list = mutableListOf<ItemHistoryEvents>(
-            ItemHistoryEvents(
-                date = "Сегодня",
-                time = "15:03",
-                imageBasic = R.drawable.ic_basic_2,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Скоро закончится сухое молоко"
-            ),
-            ItemHistoryEvents(
-                date = "Сегодня",
-                time = "14:22",
-                imageBasic = R.drawable.ic_basic_3,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Скоро закончится вода"
-            ),
-            ItemHistoryEvents(
-                date = "Вчера",
-                time = "18:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            ),
-            ItemHistoryEvents(
-                date = "Вчера",
-                time = "11:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            ),
-            ItemHistoryEvents(
-                date = "10.05.2023",
-                time = "18:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            ),
-            ItemHistoryEvents(
-                date = "10.05.2023",
-                time = "11:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            ),
-            ItemHistoryEvents(
-                date = "11.05.2023",
-                time = "18:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            ),
-            ItemHistoryEvents(
-                date = "11.05.2023",
-                time = "11:22",
-                imageBasic = R.drawable.ic_basic_error,
-                imageSignalStatus = R.drawable.ic_signal_online,
-                numberCar = "b952 0029",
-                message = "Drop lid error"
-            )
-        )
-
         val space = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)
         binding.rvHistoryEvents.apply {
             addItemDecoration(CustomItemDecorationHistoryEvents(space))
