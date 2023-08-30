@@ -15,8 +15,8 @@
         android:label="fragment_cars"
         tools:layout="@layout/fragment_cars" >
         <action
-            android:id="@+id/action_carsFragment_to_carScreenStatusFragment"
-            app:destination="@id/carScreenStatusFragment" />
+            android:id="@+id/action_carsFragment_to_carScreenFragment"
+            app:destination="@id/carScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -28,8 +28,16 @@
         android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenStatusFragment"
         android:label="fragment_car_screen_status"
         tools:layout="@layout/fragment_car_screen_status" >
+    </fragment>
+    <fragment
+        android:id="@+id/carScreenFragment"
+        android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenFragment"
+        android:label="fragment_car_screen"
+        tools:layout="@layout/fragment_car_screen" >
+
         <argument
             android:name="itemCarModel"
             app:argType="com.example.coffeestarservicemen.model.ItemCarModel" />
+
     </fragment>
 </navigation>

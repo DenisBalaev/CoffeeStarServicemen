@@ -1,12 +1,15 @@
 package com.example.coffeestarservicemen.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.coffeestarservicemen.BottomNavInterface
+import com.example.coffeestarservicemen.MainActivity
+import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.CarsAdapter
 import com.example.coffeestarservicemen.adapter.card_car.FiltrationCarAdapter
@@ -87,12 +90,18 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             rvCars.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CarsAdapter(items = listCars){
-                    val action = CarsFragmentDirections.actionCarsFragmentToCarScreenStatusFragment(it)
+                    val action = CarsFragmentDirections.actionCarsFragmentToCarScreenFragment(it)
                     findNavController().navigate(action)
                 }
             }
         }
-
     }
 
+    override fun onStart() {
+        super.onStart()
+        MyFragment.bottomNavVisible(
+            activity = (activity as BottomNavInterface),
+            idLayout = R.layout.fragment_cars
+        )
+    }
 }

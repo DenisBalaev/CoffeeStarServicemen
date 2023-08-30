@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.coffeestarservicemen.BottomNavInterface
+import com.example.coffeestarservicemen.MainActivity
+import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.HistoryEventsAdapter
 import com.example.coffeestarservicemen.databinding.FragmentEventsBinding
@@ -88,5 +91,13 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = HistoryEventsAdapter(items = list)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MyFragment.bottomNavVisible(
+            activity = (activity as BottomNavInterface),
+            idLayout = R.layout.fragment_events
+        )
     }
 }

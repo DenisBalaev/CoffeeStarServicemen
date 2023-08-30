@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.coffeestarservicemen.BottomNavInterface
+import com.example.coffeestarservicemen.MainActivity
+import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragment
 import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
@@ -36,6 +39,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MyFragment.bottomNavVisible(
+            activity = (activity as BottomNavInterface),
+            idLayout = R.layout.fragment_profile
+        )
     }
 
     private fun blur(){

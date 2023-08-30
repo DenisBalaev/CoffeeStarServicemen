@@ -14,10 +14,4 @@ import com.example.coffeestarservicemen.databinding.FragmentCarScreenStatusBindi
 class CarScreenStatusFragment : Fragment(R.layout.fragment_car_screen_status) {
     private val binding by viewBinding(FragmentCarScreenStatusBinding::bind)
 
-    private val args: CarScreenStatusFragmentArgs by navArgs()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.tv.text = args.itemCarModel.toString()
-    }
-
 }

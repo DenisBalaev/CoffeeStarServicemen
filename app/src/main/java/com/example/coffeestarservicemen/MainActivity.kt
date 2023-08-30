@@ -10,7 +10,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(R.layout.activity_main),BottomNavInterface {
 
     private val binding by viewBinding(ActivityMainBinding::bind)
 
@@ -19,5 +19,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         val navController = findNavController(R.id.nav_host_fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun bottomNavVisibility(visibility: Int) {
+        binding.bottomNavigationView.visibility = visibility
     }
 }

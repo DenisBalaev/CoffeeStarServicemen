@@ -29,7 +29,7 @@ class CarsAdapter(
         private val tvAddress = view.findViewById<TextView>(R.id.tv_address)
         private val tvDistance = view.findViewById<TextView>(R.id.tv_distance)
         private val cardCar = view.findViewById<CardView>(R.id.card_car)
-        val tvTime = view.findViewById<TextView>(R.id.tv_time)
+        val tvTime = view.findViewById<TextView>(R.id.tv_time_opening)
         val containerDiscovery = view.findViewById<RelativeLayout>(R.id.container_discovery)
 
         fun bindView(item: ItemCarModel, listener: (ItemCarModel) -> Unit){
