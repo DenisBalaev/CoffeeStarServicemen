@@ -18,11 +18,8 @@ class HistoryEventsAdapter (
         private const val TYPE_CARD = 1
     }
 
-    private var dateSave = "Вчера"
-
     override fun getItemViewType(position: Int): Int {
-        return if (items[position].date != dateSave) {
-            dateSave = items[position].date
+        return if (items[position] is ItemHistoryEventsModel.Header) {
             TYPE_HEADER
         } else {
             TYPE_CARD
@@ -39,9 +36,9 @@ class HistoryEventsAdapter (
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
-        if (holder is HeaderViewHolder) {
+        if (holder is HeaderViewHolder && item is ItemHistoryEventsModel.Header) {
             holder.bind(item)
-        } else if (holder is CardViewHolder) {
+        } else if (holder is CardViewHolder && item is ItemHistoryEventsModel.Card) {
             holder.bind(item)
         }
     }
@@ -52,19 +49,9 @@ class HistoryEventsAdapter (
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val header = view.findViewById<TextView>(R.id.tv_header)
-        private val imageBasic = view.findViewById<ImageView>(R.id.iv_basic)
-        private val imageStatusSignal = view.findViewById<ImageView>(R.id.iv_StatusSignal)
-        private val numberCar = view.findViewById<TextView>(R.id.tv_numberCar)
-        private val time = view.findViewById<TextView>(R.id.tv_time)
-        private val message = view.findViewById<TextView>(R.id.tv_message)
 
-        fun bind(item:ItemHistoryEventsModel) {
+        fun bind(item:ItemHistoryEventsModel.Header) {
             header.text = item.date
-            imageBasic.setImageResource(item.imageBasic)
-            imageStatusSignal.setImageResource(item.imageSignalStatus)
-            numberCar.text = item.numberCar
-            time.text = item.time
-            message.text = item.message
         }
     }
 
@@ -75,7 +62,7 @@ class HistoryEventsAdapter (
         private val time = view.findViewById<TextView>(R.id.tv_time)
         private val message = view.findViewById<TextView>(R.id.tv_message)
 
-        fun bind(item: ItemHistoryEventsModel) {
+        fun bind(item: ItemHistoryEventsModel.Card) {
             imageBasic.setImageResource(item.imageBasic)
             imageStatusSignal.setImageResource(item.imageSignalStatus)
             numberCar.text = item.numberCar

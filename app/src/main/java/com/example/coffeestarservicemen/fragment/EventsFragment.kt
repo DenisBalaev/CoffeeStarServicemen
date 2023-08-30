@@ -18,64 +18,62 @@ import com.example.coffeestarservicemen.model.ItemHistoryEventsModel
 class EventsFragment : Fragment(R.layout.fragment_events) {
     private val binding by viewBinding(FragmentEventsBinding::bind)
     private val list = mutableListOf<ItemHistoryEventsModel>(
-        ItemHistoryEventsModel(
+        ItemHistoryEventsModel.Header(
             date = "Сегодня",
+        ),
+        ItemHistoryEventsModel.Card(
             time = "15:03",
             imageBasic = R.drawable.ic_basic_2,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Скоро закончится сухое молоко"
         ),
-        ItemHistoryEventsModel(
-            date = "Сегодня",
+        ItemHistoryEventsModel.Card(
             time = "14:22",
             imageBasic = R.drawable.ic_basic_3,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Скоро закончится вода"
         ),
-        ItemHistoryEventsModel(
-            date = "Вчера",
+        ItemHistoryEventsModel.Header(date = "Вчера",),
+        ItemHistoryEventsModel.Card(
             time = "18:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Drop lid error"
         ),
-        ItemHistoryEventsModel(
-            date = "Вчера",
+        ItemHistoryEventsModel.Card(
             time = "11:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Drop lid error"
         ),
-        ItemHistoryEventsModel(
-            date = "10.05.2023",
+        ItemHistoryEventsModel.Header(date = "10.05.2023"),
+        ItemHistoryEventsModel.Card(
             time = "18:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Drop lid error"
         ),
-        ItemHistoryEventsModel(
-            date = "10.05.2023",
+        ItemHistoryEventsModel.Card(
             time = "11:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Drop lid error"
         ),
-        ItemHistoryEventsModel(
-            date = "11.05.2023",
+        ItemHistoryEventsModel.Header(date = "11.05.2023"),
+        ItemHistoryEventsModel.Card(
             time = "18:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0029",
             message = "Drop lid error"
         ),
-        ItemHistoryEventsModel(
-            date = "11.05.2023",
+        ItemHistoryEventsModel.Card(
             time = "11:22",
             imageBasic = R.drawable.ic_basic_error,
             imageSignalStatus = R.drawable.ic_signal_online,
