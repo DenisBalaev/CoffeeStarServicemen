@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class TabPageAdapter(fragmentActivity: FragmentActivity?) : FragmentStateAdapter(fragmentActivity!!) {
 
     private val fragmentList:MutableList<Fragment> = ArrayList()
-    private val titleList:MutableList<String> = ArrayList()
+    val titleList:MutableList<String> = ArrayList()
 
     override fun getItemCount(): Int {
        return fragmentList.size

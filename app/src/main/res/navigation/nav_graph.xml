@@ -25,9 +25,9 @@
         tools:layout="@layout/fragment_events" />
     <fragment
         android:id="@+id/carScreenStatusFragment"
-        android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenStatusFragment"
+        android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenStatusesFragment"
         android:label="fragment_car_screen_status"
-        tools:layout="@layout/fragment_car_screen_status" >
+        tools:layout="@layout/fragment_car_screen_statuses" >
     </fragment>
     <fragment
         android:id="@+id/carScreenFragment"

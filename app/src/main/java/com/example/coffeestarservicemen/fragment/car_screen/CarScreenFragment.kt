@@ -1,11 +1,12 @@
 package com.example.coffeestarservicemen.fragment.car_screen
 
+import androidx.viewpager2.widget.ViewPager2
+
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
 import com.example.coffeestarservicemen.MyFragment
@@ -13,7 +14,6 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 
 class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
@@ -22,12 +22,10 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = activity?.let {
-            TabPageAdapter(it).apply {
-                repeat(6) {
-                    addFragment(CarScreenStatusFragment(), "Статус $it")
-                }
-            }
+        val adapter = TabPageAdapter(activity).apply {
+            addFragment(CarScreenStatusesFragment(), "Статусы")
+            addFragment(CarScreenNotesFragment(), "Заметки")
+            addFragment(CarScreenHistoryFragment(), "История")
         }
 
         with(binding){
@@ -35,11 +33,24 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
                 findNavController().popBackStack()
             }
 
-            viewPage.adapter = adapter
-            val tabLayoutMediator = TabLayoutMediator(tabLayout, viewPage) { tab, position ->
-                tab.text = "Страница " + (position + 1)
+            adapter.titleList.forEach {
+                tabLayout.addTab(tabLayout.newTab().setText(it))
             }
-            tabLayoutMediator.attach()
+
+            viewPage.adapter = adapter
+            tabLayout.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    viewPage.currentItem = tab!!.position
+                }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
+
+            viewPage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    tabLayout.selectTab(tabLayout.getTabAt(position))
+                }
+            })
         }
     }
 
