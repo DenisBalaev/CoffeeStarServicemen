@@ -1,9 +1,11 @@
 package com.example.coffeestarservicemen.fragment.car_screen
 
-import androidx.viewpager2.widget.ViewPager2
-
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,7 +15,8 @@ import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.fragment_car_screen_statuses.*
 
 
 class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
@@ -33,24 +36,16 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
                 findNavController().popBackStack()
             }
 
-            adapter.titleList.forEach {
-                tabLayout.addTab(tabLayout.newTab().setText(it))
-            }
-
             viewPage.adapter = adapter
-            tabLayout.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    viewPage.currentItem = tab!!.position
-                }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
 
-            viewPage.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    tabLayout.selectTab(tabLayout.getTabAt(position))
-                }
-            })
+            TabLayoutMediator(tabLayout,viewPage){tab,position->
+                tab.text = adapter.titleList[position]
+            }.attach()
+
+            repeat(adapter.titleList.count()){
+                val textView = LayoutInflater.from(requireContext()).inflate(R.layout.item_title_tab_layout,null) as TextView
+                tabLayout.getTabAt(it)!!.customView = textView
+            }
         }
     }
 

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/AndroidStudio/SDKAndroid/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio/SDKAndroid/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable-v23/rounder_tab_layout_view.xml" value="0.246" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/button_transition.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/gradient_app_bar.xml" value="0.246" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/ic_basic_2.xml" value="0.1755" />
@@ -29,6 +30,9 @@
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/rounder_tab_layout_view.xml" value="0.246" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_item_bottom_navigate.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_radio_button_filtration.xml" value="0.246" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_tab_layout_bacground.xml" value="0.246" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_tab_layout_title_bacground.xml" value="0.246" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/selector_tab_layout_title_color.xml" value="0.246" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/drawable/vertical_divider_history_code.xml" value="0.1755" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/bottom_dialog_history_code.xml" value="0.253125" />
@@ -57,6 +61,7 @@
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_history_code.xml" value="0.253125" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_spinner_title.xml" value="1.0" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_spinner_title_card_filter.xml" value="1.2" />
+        <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/layout/item_title_tab_layout.xml" value="0.6" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/memu.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudio10/Rabota/CoffeeStar/CoffeeStarServicemen/app/src/main/res/xml/motion_scene.xml" value="0.253125" />
