@@ -6,17 +6,30 @@
     app:startDestination="@id/profileFragment">
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.coffeestarservicemen.ProfileFragment"
+        android:name="com.example.coffeestarservicemen.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/carsFragment"
-        android:name="com.example.coffeestarservicemen.CarsFragment"
+        android:name="com.example.coffeestarservicemen.fragment.CarsFragment"
         android:label="fragment_cars"
-        tools:layout="@layout/fragment_cars" />
+        tools:layout="@layout/fragment_cars" >
+        <action
+            android:id="@+id/action_carsFragment_to_carScreenStatusFragment"
+            app:destination="@id/carScreenStatusFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.coffeestarservicemen.EventsFragment"
+        android:name="com.example.coffeestarservicemen.fragment.EventsFragment"
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/carScreenStatusFragment"
+        android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenStatusFragment"
+        android:label="fragment_car_screen_status"
+        tools:layout="@layout/fragment_car_screen_status" >
+        <argument
+            android:name="itemCarModel"
+            app:argType="com.example.coffeestarservicemen.model.ItemCarModel" />
+    </fragment>
 </navigation>

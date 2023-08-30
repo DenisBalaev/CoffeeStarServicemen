@@ -10,13 +10,13 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationBottom
-import com.example.coffeestarservicemen.model.ItemCar
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
+import com.example.coffeestarservicemen.model.ItemCarModel
 
 class CarsAdapter(
-    private val items:List<ItemCar>,
-    private val listener:(ItemCar)->Unit
+    private val items:List<ItemCarModel>,
+    private val listener:(ItemCarModel)->Unit
 ): RecyclerView.Adapter<CarsAdapter.ItemCardCarViewHolder>() {
 
     class ItemCardCarViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -32,7 +32,7 @@ class CarsAdapter(
         val tvTime = view.findViewById<TextView>(R.id.tv_time)
         val containerDiscovery = view.findViewById<RelativeLayout>(R.id.container_discovery)
 
-        fun bindView(item: ItemCar, listener: (ItemCar) -> Unit){
+        fun bindView(item: ItemCarModel, listener: (ItemCarModel) -> Unit){
 
             ivStatusSignal.setImageResource(item.imageSignalStatus)
             tvNumberCar.text = item.numberCar
@@ -52,23 +52,10 @@ class CarsAdapter(
                 rvError.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                val listError = item.listError.toMutableList()
                 rvError.apply {
-                    setHasFixedSize(true)
                     addItemDecoration(CustomItemDecorationLeft(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
                     layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
-                    adapter = ErrorAdapterCardCar(listError)
-                    addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                            super.onScrolled(recyclerView, dx, dy)
-
-                            val lm = (recyclerView.layoutManager as LinearLayoutManager)
-                            val lastVisibleItem = lm.findLastVisibleItemPosition()
-                            val itemsOffScreen = lm.itemCount - lastVisibleItem
-                            listError[lastVisibleItem] = "+$itemsOffScreen";
-                            recyclerView.adapter?.notifyItemChanged(lastVisibleItem);
-                        }
-                    })
+                    adapter = ErrorAdapterCardCar(items = item.listError)
                 }
             }
 

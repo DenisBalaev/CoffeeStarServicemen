@@ -1,30 +1,32 @@
-package com.example.coffeestarservicemen
+package com.example.coffeestarservicemen.fragment
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.CarsAdapter
 import com.example.coffeestarservicemen.adapter.card_car.FiltrationCarAdapter
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
-import com.example.coffeestarservicemen.model.ItemCar
-import com.example.coffeestarservicemen.model.ItemFilling
+import com.example.coffeestarservicemen.model.ItemCarModel
+import com.example.coffeestarservicemen.model.ItemFillingModel
 
 
 class CarsFragment : Fragment(R.layout.fragment_cars) {
     private val binding by viewBinding(FragmentCarsBinding::bind)
     private val listSpinner = listOf("Сначала ближайшие", "Сначала дальние", "Рабочие", "Неисправные")
     private val listFiltration = listOf("Все","Закрыты","С ошибками","Продукты заканчиваются")
-    private val listCars = mutableListOf<ItemCar>(
-        ItemCar(
+    private val listCars = mutableListOf<ItemCarModel>(
+        ItemCarModel(
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0020",
             listFilling = listOf(
-                ItemFilling(
+                ItemFillingModel(
                     image = R.drawable.ic_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
                     color = R.color.yellow_D8B431
                 )
@@ -32,17 +34,17 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             listError = listOf(), address = "Т/Ц «Авиапарк» 0,5 км", distance = "0,5 км",
             time = "8:00"
         ),
-        ItemCar(
+        ItemCarModel(
             imageSignalStatus = R.drawable.ic_signal_offline,
             numberCar = "b952 0021",
             listFilling = listOf(
-                ItemFilling(
+                ItemFillingModel(
                     image = R.drawable.ic_basic_2, listText = listOf(
                         "Молоко","Матча","Какао","Горячий шоколад","Сироп из клубники","Сироп из малины"
                     ),
                     color = R.color.red_E03F36
                 ),
-                ItemFilling(
+                ItemFillingModel(
                     image = R.drawable.ic_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
                     color = R.color.yellow_D8B431
                 )
@@ -50,13 +52,13 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error 1","Slideway №4 error 2"),
             address = "Т/Ц «Авиапарк» 1,5 км", distance = "1,5 км"
         ),
-        ItemCar(
+        ItemCarModel(
             imageSignalStatus = R.drawable.ic_signal_offline,
             numberCar = "b952 0022",
             listFilling = listOf(),
             listError = listOf(), address = "Т/Ц «Авиапарк» 2,5 км", distance = "2,5 км"
         ),
-        ItemCar(
+        ItemCarModel(
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0023",
             listFilling = listOf(),
@@ -69,7 +71,8 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
 
         with(binding){
             spinnerSorting.apply {
-                adapter = SpinnerSortingCarAdapter(requireContext(), R.layout.item_spinner_title, listSpinner).apply {
+                adapter = SpinnerSortingCarAdapter(requireContext(),
+                    R.layout.item_spinner_title, listSpinner).apply {
                     setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 }
                 setSelection(0)
@@ -84,7 +87,8 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             rvCars.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CarsAdapter(items = listCars){
-                    Toast.makeText(requireContext(),it.toString(),Toast.LENGTH_LONG).show()
+                    val action = CarsFragmentDirections.actionCarsFragmentToCarScreenStatusFragment(it)
+                    findNavController().navigate(action)
                 }
             }
         }

@@ -3,12 +3,9 @@ package com.example.coffeestarservicemen.adapter.card_car
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.model.ItemFilling
 
 class ErrorAdapterCardCar(
     private val items:List<String>

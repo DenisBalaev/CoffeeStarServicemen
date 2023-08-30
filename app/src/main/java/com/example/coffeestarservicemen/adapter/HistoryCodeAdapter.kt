@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.model.ItemsHistoryCode
+import com.example.coffeestarservicemen.model.ItemsHistoryCodeModel
 
 class HistoryCodeAdapter(
-    private val items:List<ItemsHistoryCode>
+    private val items:List<ItemsHistoryCodeModel>
 ):RecyclerView.Adapter<HistoryCodeAdapter.ItemMainMenuViewHolder>() {
 
     class ItemMainMenuViewHolder(view: View):RecyclerView.ViewHolder(view){
@@ -17,7 +17,7 @@ class HistoryCodeAdapter(
         private val date = view.findViewById<TextView>(R.id.tv_date)
         private val code = view.findViewById<TextView>(R.id.tv_code)
 
-        fun bindView(item:ItemsHistoryCode){
+        fun bindView(item:ItemsHistoryCodeModel){
             date.text = item.date
             code.text = item.code
         }

@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.model.ItemFilling
+import com.example.coffeestarservicemen.model.ItemFillingModel
 
 class FillingCardCarAdapter(
-    private val items:List<ItemFilling>
+    private val items:List<ItemFillingModel>
 ): RecyclerView.Adapter<FillingCardCarAdapter.ItemCardCarViewHolder>() {
 
     class ItemCardCarViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -19,7 +19,7 @@ class FillingCardCarAdapter(
         private val ivFilling = view.findViewById<ImageView>(R.id.iv_filling)
         private val tvFilling = view.findViewById<TextView>(R.id.tv_filling)
 
-        fun bindView(item: ItemFilling){
+        fun bindView(item: ItemFillingModel){
             ivFilling.setImageResource(item.image)
             tvFilling.apply {
                 text = item.listText.joinToString(separator = " • ")

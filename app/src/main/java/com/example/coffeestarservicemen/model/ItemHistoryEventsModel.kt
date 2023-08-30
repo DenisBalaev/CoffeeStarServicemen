@@ -1,6 +1,6 @@
 package com.example.coffeestarservicemen.model
 
-data class ItemHistoryEvents(
+data class ItemHistoryEventsModel(
     val date:String,
     val time:String,
     val imageBasic:Int,

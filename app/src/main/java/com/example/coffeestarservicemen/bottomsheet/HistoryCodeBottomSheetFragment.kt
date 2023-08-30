@@ -1,9 +1,7 @@
 package com.example.coffeestarservicemen.bottomsheet
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -11,7 +9,7 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.HistoryCodeAdapter
 import com.example.coffeestarservicemen.databinding.BottomDialogHistoryCodeBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryCode
-import com.example.coffeestarservicemen.model.ItemsHistoryCode
+import com.example.coffeestarservicemen.model.ItemsHistoryCodeModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment(R.layout.bottom_dialog_history_code) {
@@ -25,10 +23,10 @@ class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment(R.layout.bottom
             dismiss()
         }
 
-        val list = mutableListOf<ItemsHistoryCode>(
-            ItemsHistoryCode(date = "15 декабря", code = "2RD 54W"),
-            ItemsHistoryCode(date = "11 июня", code = "V99 HJ1"),
-            ItemsHistoryCode(date = "9 апреля", code = "RQ5 8CP")
+        val list = mutableListOf<ItemsHistoryCodeModel>(
+            ItemsHistoryCodeModel(date = "15 декабря", code = "2RD 54W"),
+            ItemsHistoryCodeModel(date = "11 июня", code = "V99 HJ1"),
+            ItemsHistoryCodeModel(date = "9 апреля", code = "RQ5 8CP")
         )
 
         repeat(3){
