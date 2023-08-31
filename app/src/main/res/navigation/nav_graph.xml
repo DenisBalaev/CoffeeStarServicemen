@@ -24,20 +24,29 @@
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" />
     <fragment
-        android:id="@+id/carScreenStatusFragment"
-        android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenStatusesFragment"
-        android:label="fragment_car_screen_status"
-        tools:layout="@layout/fragment_car_screen_statuses" >
-    </fragment>
-    <fragment
         android:id="@+id/carScreenFragment"
         android:name="com.example.coffeestarservicemen.fragment.car_screen.CarScreenFragment"
         android:label="fragment_car_screen"
         tools:layout="@layout/fragment_car_screen" >
 
         <argument
-            android:name="itemCarModel"
-            app:argType="com.example.coffeestarservicemen.model.ItemCarModel" />
+            android:name="SelectorPage"
+            app:argType="integer"
+            android:defaultValue="0" />
 
+        <argument
+            android:name="itemCarModel"
+            app:argType="com.example.coffeestarservicemen.model.ItemCarModel"
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/newNoteFragment"
+        android:name="com.example.coffeestarservicemen.fragment.car_screen.NewNoteFragment"
+        android:label="fragment_new_note"
+        tools:layout="@layout/fragment_new_note" >
+        <action
+            android:id="@+id/action_newNoteFragment_to_carScreenFragment"
+            app:destination="@id/carScreenFragment" />
     </fragment>
 </navigation>

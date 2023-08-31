@@ -15,22 +15,18 @@ import com.example.coffeestarservicemen.adapter.card_car.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_car_screen_statuses.*
+import kotlinx.android.synthetic.main.fragment_new_note.*
 
 class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
     private val binding by viewBinding(FragmentCarScreenBinding::bind)
-    private val args: CarScreenFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = TabPageAdapter(fragmentManager = parentFragmentManager, lifecycle = lifecycle).apply {
-            addFragment(CarScreenStatusesFragment(), "Статусы")
-            addFragment(CarScreenNotesFragment(), "Заметки")
-            addFragment(CarScreenHistoryFragment(), "История")
-        }
-
         with(binding){
-            ivArrowBack.setOnClickListener {
-                findNavController().popBackStack()
+            val adapter = TabPageAdapter(fragmentManager = parentFragmentManager, lifecycle = lifecycle).apply {
+                addFragment(CarScreenStatusesFragment(), "Статусы")
+                addFragment(CarScreenNotesFragment(), "Заметки")
+                addFragment(CarScreenHistoryFragment(), "История")
             }
 
             viewPage.adapter = adapter
@@ -44,6 +40,11 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
                 tabLayout.getTabAt(it)!!.customView = textView
             }
 
+            viewPage.setCurrentItem(requireArguments().getInt("SelectorPage"), false)
+
+            ivArrowBack.setOnClickListener {
+                findNavController().navigate(R.id.carsFragment)
+            }
         }
     }
 

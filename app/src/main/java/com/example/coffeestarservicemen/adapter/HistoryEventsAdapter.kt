@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.model.ItemHistoryEventsModel
+import com.example.coffeestarservicemen.model.*
 
 class HistoryEventsAdapter (
     private val items: List<ItemHistoryEventsModel>
@@ -19,7 +19,7 @@ class HistoryEventsAdapter (
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (items[position] is ItemHistoryEventsModel.Header) {
+        return if (items[position] is ItemHistoryHeaderEventsModel) {
             TYPE_HEADER
         } else {
             TYPE_CARD
@@ -36,9 +36,9 @@ class HistoryEventsAdapter (
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
-        if (holder is HeaderViewHolder && item is ItemHistoryEventsModel.Header) {
+        if (holder is HeaderViewHolder && item is ItemHistoryHeaderEventsModel) {
             holder.bind(item)
-        } else if (holder is CardViewHolder && item is ItemHistoryEventsModel.Card) {
+        } else if (holder is CardViewHolder && item is ItemHistoryCardEventsModel) {
             holder.bind(item)
         }
     }
@@ -50,7 +50,7 @@ class HistoryEventsAdapter (
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val header = view.findViewById<TextView>(R.id.tv_header)
 
-        fun bind(item:ItemHistoryEventsModel.Header) {
+        fun bind(item: ItemHistoryHeaderEventsModel) {
             header.text = item.date
         }
     }
@@ -62,7 +62,7 @@ class HistoryEventsAdapter (
         private val time = view.findViewById<TextView>(R.id.tv_time)
         private val message = view.findViewById<TextView>(R.id.tv_message)
 
-        fun bind(item: ItemHistoryEventsModel.Card) {
+        fun bind(item: ItemHistoryCardEventsModel) {
             imageBasic.setImageResource(item.imageBasic)
             imageStatusSignal.setImageResource(item.imageSignalStatus)
             numberCar.text = item.numberCar
