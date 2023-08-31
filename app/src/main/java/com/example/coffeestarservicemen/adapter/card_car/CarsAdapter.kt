@@ -32,6 +32,18 @@ class CarsAdapter(
         val tvTime = view.findViewById<TextView>(R.id.tv_time_opening)
         val containerDiscovery = view.findViewById<RelativeLayout>(R.id.container_discovery)
 
+        init {
+            rvFilling.apply {
+                addItemDecoration(CustomItemDecorationBottom(itemView.context.resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
+                layoutManager = LinearLayoutManager(itemView.context)
+            }
+
+            rvError.apply {
+                addItemDecoration(CustomItemDecorationLeft(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
+                layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
+            }
+        }
+
         fun bindView(item: ItemCarModel, listener: (ItemCarModel) -> Unit){
 
             ivStatusSignal.setImageResource(item.imageSignalStatus)
@@ -41,22 +53,14 @@ class CarsAdapter(
                 rvFilling.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvFilling.apply {
-                    addItemDecoration(CustomItemDecorationBottom(itemView.context.resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
-                    layoutManager = LinearLayoutManager(itemView.context)
-                    adapter = FillingCardCarAdapter(item.listFilling)
-                }
+                rvFilling.adapter = FillingCardCarAdapter(item.listFilling)
             }
 
             if (item.listError.isEmpty()) {
                 rvError.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvError.apply {
-                    addItemDecoration(CustomItemDecorationLeft(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
-                    layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
-                    adapter = ErrorAdapterCardCar(items = item.listError)
-                }
+                rvError.adapter = ErrorAdapterCardCar(items = item.listError)
             }
 
             tvAddress.text = item.address

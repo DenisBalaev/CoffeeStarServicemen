@@ -17,29 +17,35 @@ class HistoryEventsAdapter (
 ) : RecyclerView.Adapter<HistoryEventsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recyclerview_eventes, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_recyclerview_eventes, parent, false),
+            spaceTopCard
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(item = items[position], spaceTopCard)
+        holder.bind(item = items[position])
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View,spaceTopCard:Int) : RecyclerView.ViewHolder(view) {
         private val tvHeader = view.findViewById<TextView>(R.id.tv_header)
         private val recyclerView = view.findViewById<RecyclerView>(R.id.rv_list_event)
 
-        fun bind(item: ItemEventsModel, spaceTopCard: Int) {
-            tvHeader.text = item.date
-
+        init {
             recyclerView.apply {
                 addItemDecoration(CustomItemDecorationCardEvents(spaceTopCard))
                 layoutManager = LinearLayoutManager(itemView.context)
-                adapter = ListEventsAdapter(items = item.listCard)
             }
+        }
+
+        fun bind(item: ItemEventsModel) {
+            tvHeader.text = item.date
+
+            recyclerView.adapter = ListEventsAdapter(items = item.listCard)
         }
     }
 }
