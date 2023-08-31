@@ -5,13 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.adapter.eventes.HistoryEventsAdapter
 
-class CustomItemDecorationHistoryEvents(private val space: Int) : RecyclerView.ItemDecoration() {
+class CustomItemDecorationCardEvents(private val space: Int) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        val holder = parent.getChildViewHolder(view)
-        outRect.top = if (holder is HistoryEventsAdapter.HeaderViewHolder) {
-            0
-        } else {
-            space
-        }
+        val position = parent.getChildAdapterPosition(view)
+        outRect.top = if (position != 0) space else 0
+        outRect.bottom = if (position == state.itemCount - 1) space else 0
     }
 }

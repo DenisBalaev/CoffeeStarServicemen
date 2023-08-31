@@ -1,15 +1,14 @@
 package com.example.coffeestarservicemen.model
 
-interface ItemHistoryEventsModel
-
-data class ItemHistoryCardEventsModel(
+data class ItemCardEventsModel(
     val time: String,
     val imageBasic: Int,
     val imageSignalStatus: Int,
     val numberCar: String,
     val message: String
-):ItemHistoryEventsModel
+)
 
-data class ItemHistoryHeaderEventsModel(
-    val date: String
-):ItemHistoryEventsModel
+data class ItemEventsModel(
+    val date: String,
+    val listCard:List<ItemCardEventsModel>
+)
