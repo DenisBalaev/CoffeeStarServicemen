@@ -22,15 +22,14 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        val adapter = TabPageAdapter(fragmentManager = childFragmentManager, lifecycle = lifecycle).apply {
+            addFragment(CarScreenStatusesFragment(), "Статусы")
+            addFragment(CarScreenNotesFragment(), "Заметки")
+            addFragment(CarScreenHistoryFragment(), "История")
+        }
+
         with(binding){
-            val adapter = TabPageAdapter(fragmentManager = childFragmentManager, lifecycle = lifecycle).apply {
-                addFragment(CarScreenStatusesFragment(), "Статусы")
-                addFragment(CarScreenNotesFragment(), "Заметки")
-                addFragment(CarScreenHistoryFragment(), "История")
-            }
-
             viewPage.adapter = adapter
-
             TabLayoutMediator(tabLayout,viewPage){tab,position->
                 tab.text = adapter.titleList[position]
             }.attach()
@@ -39,7 +38,6 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
                 val textView = LayoutInflater.from(requireContext()).inflate(R.layout.item_title_tab_layout,null) as TextView
                 tabLayout.getTabAt(it)!!.customView = textView
             }
-
             viewPage.setCurrentItem(requireArguments().getInt("SelectorPage"), false)
 
             ivArrowBack.setOnClickListener {
