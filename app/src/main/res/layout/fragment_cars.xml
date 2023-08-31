@@ -9,6 +9,7 @@
     android:background="@color/black_101010">
 
     <EditText
+        android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounder_search"

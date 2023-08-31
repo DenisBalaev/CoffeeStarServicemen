@@ -23,7 +23,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         with(binding){
-            val adapter = TabPageAdapter(fragmentManager = parentFragmentManager, lifecycle = lifecycle).apply {
+            val adapter = TabPageAdapter(fragmentManager = childFragmentManager, lifecycle = lifecycle).apply {
                 addFragment(CarScreenStatusesFragment(), "Статусы")
                 addFragment(CarScreenNotesFragment(), "Заметки")
                 addFragment(CarScreenHistoryFragment(), "История")
