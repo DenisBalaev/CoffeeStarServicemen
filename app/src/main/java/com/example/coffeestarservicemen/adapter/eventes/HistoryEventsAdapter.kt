@@ -1,4 +1,4 @@
-package com.example.coffeestarservicemen.adapter
+package com.example.coffeestarservicemen.adapter.eventes
 
 import android.view.LayoutInflater
 import android.view.View

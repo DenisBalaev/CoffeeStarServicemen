@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.adapter.HistoryEventsAdapter
+import com.example.coffeestarservicemen.adapter.eventes.HistoryEventsAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenHistoryBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryEvents
 import com.example.coffeestarservicemen.model.ItemHistoryCardEventsModel
