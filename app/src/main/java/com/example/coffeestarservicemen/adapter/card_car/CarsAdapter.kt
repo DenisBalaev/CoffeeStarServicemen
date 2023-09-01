@@ -23,12 +23,12 @@ class CarsAdapter(
     class ItemCardCarViewHolder(private val binding: ItemCardCarBinding): RecyclerView.ViewHolder(binding.root){
         init {
             binding.rvInformationFillingCar.apply {
-                addItemDecoration(CustomItemDecorationBottom(itemView.context.resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
+                addItemDecoration(CustomItemDecorationBottom(resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
                 layoutManager = LinearLayoutManager(itemView.context)
             }
 
             binding.rvInformationErrorCar.apply {
-                addItemDecoration(CustomItemDecorationLeft(itemView.context.resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
+                addItemDecoration(CustomItemDecorationLeft(resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
                 layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
             }
         }

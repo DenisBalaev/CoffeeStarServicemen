@@ -34,7 +34,7 @@ class HistoryEventsAdapter (
 
         init {
             binding.rvListEvent.apply {
-                addItemDecoration(CustomItemDecorationCardEvents(itemView.resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)))
+                addItemDecoration(CustomItemDecorationCardEvents(resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)))
                 layoutManager = LinearLayoutManager(itemView.context)
             }
         }
