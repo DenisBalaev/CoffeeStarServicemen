@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.adapter.card_car.car_screen.status.StatusAdapter
+import com.example.coffeestarservicemen.adapter.car_screen.status.StatusAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenStatusesBinding
 import com.example.coffeestarservicemen.model.*
-import kotlinx.android.synthetic.main.bottom_dialog_history_code.*
 
 class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses) {
     private val binding by viewBinding(FragmentCarScreenStatusesBinding::bind)

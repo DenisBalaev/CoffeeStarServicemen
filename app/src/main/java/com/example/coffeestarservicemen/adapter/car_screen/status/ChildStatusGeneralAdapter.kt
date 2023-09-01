@@ -1,4 +1,4 @@
-package com.example.coffeestarservicemen.adapter.card_car.car_screen.status
+package com.example.coffeestarservicemen.adapter.car_screen.status
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

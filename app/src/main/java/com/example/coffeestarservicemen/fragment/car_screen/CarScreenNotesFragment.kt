@@ -2,14 +2,12 @@ package com.example.coffeestarservicemen.fragment.car_screen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.adapter.card_car.car_screen.NotesAdapter
+import com.example.coffeestarservicemen.adapter.car_screen.NotesAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenNotesBinding
 
 

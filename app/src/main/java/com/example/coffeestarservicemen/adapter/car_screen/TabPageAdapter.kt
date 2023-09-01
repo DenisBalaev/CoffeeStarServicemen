@@ -1,7 +1,6 @@
-package com.example.coffeestarservicemen.adapter.card_car
+package com.example.coffeestarservicemen.adapter.car_screen
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
