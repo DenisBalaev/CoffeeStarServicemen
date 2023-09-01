@@ -97,8 +97,7 @@ class CarScreenHistoryFragment : Fragment(R.layout.fragment_car_screen_history) 
         binding.rvHistoryCarScreen.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = HistoryEventsAdapter(
-                items = list,
-                spaceTopCard = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)
+                items = list
             )
         }
     }

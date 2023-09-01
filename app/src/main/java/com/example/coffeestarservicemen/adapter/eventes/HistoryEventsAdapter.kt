@@ -8,18 +8,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.databinding.ItemRecyclerviewEventesBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationCardEvents
 import com.example.coffeestarservicemen.model.*
 
 class HistoryEventsAdapter (
-    private val items: List<ItemEventsModel>,
-    private val spaceTopCard:Int
+    private val items: List<ItemEventsModel>
 ) : RecyclerView.Adapter<HistoryEventsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_recyclerview_eventes, parent, false),
-            spaceTopCard
+            ItemRecyclerviewEventesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -31,21 +30,18 @@ class HistoryEventsAdapter (
         return items.size
     }
 
-    class ViewHolder(view: View,spaceTopCard:Int) : RecyclerView.ViewHolder(view) {
-        private val tvHeader = view.findViewById<TextView>(R.id.tv_header)
-        private val recyclerView = view.findViewById<RecyclerView>(R.id.rv_list_event)
+    class ViewHolder(private val binding: ItemRecyclerviewEventesBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            recyclerView.apply {
-                addItemDecoration(CustomItemDecorationCardEvents(spaceTopCard))
+            binding.rvListEvent.apply {
+                addItemDecoration(CustomItemDecorationCardEvents(itemView.resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)))
                 layoutManager = LinearLayoutManager(itemView.context)
             }
         }
 
-        fun bind(item: ItemEventsModel) {
+        fun bind(item: ItemEventsModel)= with(binding) {
             tvHeader.text = item.date
-
-            recyclerView.adapter = ListEventsAdapter(items = item.listCard)
+            rvListEvent.adapter = ListEventsAdapter(items = item.listCard)
         }
     }
 }

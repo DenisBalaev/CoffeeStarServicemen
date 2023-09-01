@@ -13,6 +13,7 @@ import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
+import com.example.coffeestarservicemen.databinding.ItemTitleTabLayoutBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_car_screen_statuses.*
 import kotlinx.android.synthetic.main.fragment_new_note.*
@@ -35,8 +36,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             }.attach()
 
             repeat(adapter.titleList.size){
-                val textView = LayoutInflater.from(requireContext()).inflate(R.layout.item_title_tab_layout,null) as TextView
-                tabLayout.getTabAt(it)!!.customView = textView
+                tabLayout.getTabAt(it)!!.customView = ItemTitleTabLayoutBinding.inflate(layoutInflater).text1
             }
             viewPage.setCurrentItem(requireArguments().getInt("SelectorPage"), false)
 

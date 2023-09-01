@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
+import com.example.coffeestarservicemen.databinding.ItemCardComboBoxFiltrationBinding
+import com.example.coffeestarservicemen.databinding.ItemCardFiltrationBinding
 
 class FiltrationCarAdapter(
     private val items:List<String>
@@ -27,20 +29,17 @@ class FiltrationCarAdapter(
         }
     }
 
-    class ItemFiltrationCardViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val nameFilter = view.findViewById<TextView>(R.id.tv_nam_filter)
-
+    class ItemFiltrationCardViewHolder(private val binding: ItemCardFiltrationBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item:String) {
-            nameFilter.text = item
+            binding.tvNamFilter.text = item
         }
     }
 
-    class ItemFiltrationComboBoxViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val spinner = view.findViewById<Spinner>(R.id.spinner_filtration)
+    class ItemFiltrationComboBoxViewHolder(private val binding: ItemCardComboBoxFiltrationBinding): RecyclerView.ViewHolder(binding.root){
         private val listSpinner = listOf("Все", "Онлайн", "Офлайн")
 
-        fun bindView() {
-            spinner.apply {
+        fun bindView()= with(binding){
+            spinnerFiltration.apply {
                 adapter = SpinnerSortingCarAdapter(itemView.context, R.layout.item_spinner_title_card_filtration, listSpinner).apply {
                     setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 }
@@ -51,9 +50,13 @@ class FiltrationCarAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TYPE_CARD) {
-            ItemFiltrationCardViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card_filtration, parent, false))
+            ItemFiltrationCardViewHolder(
+                ItemCardFiltrationBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            )
         }else {
-            ItemFiltrationComboBoxViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card_combo_box_filtration, parent, false))
+            ItemFiltrationComboBoxViewHolder(
+                ItemCardComboBoxFiltrationBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            )
         }
     }
 

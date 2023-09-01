@@ -98,8 +98,7 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
         binding.rvHistoryEvents.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = HistoryEventsAdapter(
-                items = list,
-                spaceTopCard = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_HistoryEvents)
+                items = list
             )
         }
     }

@@ -8,18 +8,15 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.databinding.ItemFillingCardCarsBinding
 import com.example.coffeestarservicemen.model.ItemFillingModel
 
 class FillingCardCarAdapter(
     private val items:List<ItemFillingModel>
 ): RecyclerView.Adapter<FillingCardCarAdapter.ItemCardCarViewHolder>() {
 
-    class ItemCardCarViewHolder(view: View): RecyclerView.ViewHolder(view){
-
-        private val ivFilling = view.findViewById<ImageView>(R.id.iv_filling)
-        private val tvFilling = view.findViewById<TextView>(R.id.tv_filling)
-
-        fun bindView(item: ItemFillingModel){
+    class ItemCardCarViewHolder(private val binding: ItemFillingCardCarsBinding): RecyclerView.ViewHolder(binding.root){
+        fun bindView(item: ItemFillingModel)= with(binding){
             ivFilling.setImageResource(item.image)
             tvFilling.apply {
                 text = item.listText.joinToString(separator = " • ")
@@ -30,8 +27,7 @@ class FillingCardCarAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemCardCarViewHolder {
         return ItemCardCarViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_filling_card_cars, parent, false)
+            ItemFillingCardCarsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         )
     }
 

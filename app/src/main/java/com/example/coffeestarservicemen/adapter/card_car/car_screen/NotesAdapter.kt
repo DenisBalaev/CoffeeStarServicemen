@@ -6,24 +6,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.databinding.ItemCardNoteBinding
 
 class NotesAdapter(
     private val items:List<String>
 ): RecyclerView.Adapter<NotesAdapter.ItemCardNoteViewHolder>() {
 
-    class ItemCardNoteViewHolder(view: View): RecyclerView.ViewHolder(view){
-
-        private val textNote = view.findViewById<TextView>(R.id.tv_text_note)
-
+    class ItemCardNoteViewHolder(private val binding: ItemCardNoteBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item: String){
-            textNote.text = item
+            binding.tvTextNote.text = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemCardNoteViewHolder {
         return ItemCardNoteViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_card_note, parent, false)
+            ItemCardNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

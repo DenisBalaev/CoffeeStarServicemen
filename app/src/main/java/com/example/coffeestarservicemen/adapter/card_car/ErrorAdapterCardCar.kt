@@ -6,24 +6,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.databinding.ItemCardCarErrorBinding
+import com.example.coffeestarservicemen.databinding.ItemFillingCardCarsBinding
 
 class ErrorAdapterCardCar(
     private val items:List<String>
 ): RecyclerView.Adapter<ErrorAdapterCardCar.ItemCardCarViewHolder>() {
 
-    class ItemCardCarViewHolder(view: View): RecyclerView.ViewHolder(view){
-
-        private val tvError = view.findViewById<TextView>(R.id.tv_error)
-
+    class ItemCardCarViewHolder(private val binding: ItemCardCarErrorBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item: String){
-            tvError.text = item
+            binding.tvError.text = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemCardCarViewHolder {
         return ItemCardCarViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_card_car_error, parent, false)
+            ItemCardCarErrorBinding.inflate( LayoutInflater.from(parent.context), parent, false)
         )
     }
 
