@@ -8,7 +8,8 @@ import com.example.coffeestarservicemen.databinding.ItemCardStatusNoActiveBindin
 import com.example.coffeestarservicemen.model.ItemCardStatusModel
 
 class ChildStatusGeneralAdapter(
-    private val items: List<ItemCardStatusModel>
+    private val items: List<ItemCardStatusModel>,
+    private val listener:(ItemCardStatusModel)->Unit
 ):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
@@ -18,11 +19,15 @@ class ChildStatusGeneralAdapter(
 
     class ViewHolderActive(private val binding: ItemCardStatusActiveBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bindViewActive(item: ItemCardStatusModel, position: Int)= with(binding){
+        fun bindViewActive(item: ItemCardStatusModel, position: Int,listener: (ItemCardStatusModel) -> Unit)= with(binding){
             ivIcon.setImageResource(item.image)
             tvNumber.text = "${position + 1}"
             tvName.text = item.name
             tvPercent.text = "≈ ${item.percent}%"
+
+            ivPlus.setOnClickListener {
+                listener(item)
+            }
         }
     }
 
@@ -57,7 +62,7 @@ class ChildStatusGeneralAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is ViewHolderActive->{holder.bindViewActive(items[position], position)}
+            is ViewHolderActive->{holder.bindViewActive(items[position], position,listener)}
             is ViewHolderNoActive->{holder.bindViewNoActive(items[position], position)}
         }
     }

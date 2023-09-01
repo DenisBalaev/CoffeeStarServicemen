@@ -15,12 +15,11 @@ import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
-    private lateinit var bottomSheetDialog:HistoryCodeBottomSheetFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         blur()
 
-        bottomSheetDialog = HistoryCodeBottomSheetFragment()
+        val bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
         with(binding) {
             btnCodeBlur.setOnClickListener {

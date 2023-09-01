@@ -5,15 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.databinding.ItemHistoryCodeBottomSheetBinding
+import com.example.coffeestarservicemen.databinding.ItemBottomSheetHistoryCodeBinding
 import com.example.coffeestarservicemen.model.ItemsHistoryCodeModel
 
 class HistoryCodeAdapter(
     private val items:List<ItemsHistoryCodeModel>
 ):RecyclerView.Adapter<HistoryCodeAdapter.ItemMainMenuViewHolder>() {
 
-    class ItemMainMenuViewHolder(private val binding: ItemHistoryCodeBottomSheetBinding):RecyclerView.ViewHolder(binding.root){
+    class ItemMainMenuViewHolder(private val binding: ItemBottomSheetHistoryCodeBinding):RecyclerView.ViewHolder(binding.root){
         fun bindView(item:ItemsHistoryCodeModel) = with(binding){
             tvDate.text = item.date
             tvCode.text = item.code
@@ -22,7 +21,7 @@ class HistoryCodeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMainMenuViewHolder {
         return ItemMainMenuViewHolder(
-            ItemHistoryCodeBottomSheetBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            ItemBottomSheetHistoryCodeBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         )
     }
 

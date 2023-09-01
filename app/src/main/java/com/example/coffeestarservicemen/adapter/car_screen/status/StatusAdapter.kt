@@ -9,6 +9,7 @@ import com.example.coffeestarservicemen.adapter.card_car.ErrorAdapter
 import com.example.coffeestarservicemen.databinding.ItemCardRecyclerviewErrorStatusBinding
 import com.example.coffeestarservicemen.databinding.ItemCardRecyclerviewGeneralStatusBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationErrorStatus
+import com.example.coffeestarservicemen.model.ItemCardStatusModel
 import com.example.coffeestarservicemen.model.ListError
 import com.example.coffeestarservicemen.model.ListItemGeneralStatusModel
 import com.example.coffeestarservicemen.model.StatusInterface
@@ -18,7 +19,8 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 
 class StatusAdapter(
-    private val items:List<StatusInterface>
+    private val items:List<StatusInterface>,
+    private val listener:(ItemCardStatusModel)->Unit
 ):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
@@ -49,7 +51,7 @@ class StatusAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is ErrorViewHolder->{holder.bindView((items[position] as ListError))}
-            is GeneralViewHolder->{holder.bindView(items[position] as ListItemGeneralStatusModel)}
+            is GeneralViewHolder->{holder.bindView(items[position] as ListItemGeneralStatusModel,listener)}
         }
     }
 
@@ -89,9 +91,11 @@ class StatusAdapter(
             }
         }
 
-        fun bindView(item: ListItemGeneralStatusModel)= with(binding){
+        fun bindView(item: ListItemGeneralStatusModel,listener: (ItemCardStatusModel) -> Unit)= with(binding){
             tvTitle.text = item.title
-            rvGeneral.adapter = ChildStatusGeneralAdapter(item.listCardGeneralStatus)
+            rvGeneral.adapter = ChildStatusGeneralAdapter(item.listCardGeneralStatus){
+                listener(it)
+            }
         }
     }
 

@@ -8,18 +8,11 @@
     tools:context=".fragment.CarsFragment"
     android:background="@color/black_101010">
 
-    <EditText
-        android:id="@+id/et_search"
+    <include
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounder_search"
-        android:drawableStart="@drawable/ic_search"
-        android:paddingVertical="10sp"
-        android:paddingStart="12dp"
-        android:paddingEnd="0dp"
-        android:drawablePadding="8dp"
-        android:hint="Номер машины или место"
-        android:textColorHint="@color/gray_8B8B8B"
+        layout="@layout/search_panel"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
         />
