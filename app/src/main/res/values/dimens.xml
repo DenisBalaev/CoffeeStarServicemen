@@ -7,4 +7,7 @@
 
     <dimen name="marginBottom_recyclerView_Filling_Cad_Car">12dp</dimen>
     <dimen name="marginStart_recyclerView_Error_Cad_Car">8dp</dimen>
+
+    <dimen name="marginEnd_recyclerView_Error_Status">8dp</dimen>
+    <dimen name="marginTop_recyclerView_Error_Status">8dp</dimen>
 </resources>
