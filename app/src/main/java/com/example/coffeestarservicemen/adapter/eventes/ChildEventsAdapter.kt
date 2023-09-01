@@ -1,18 +1,14 @@
 package com.example.coffeestarservicemen.adapter.eventes
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.databinding.ItemCardHistoryEventsBinding
 import com.example.coffeestarservicemen.model.ItemCardEventsModel
 
-class ListEventsAdapter(
+class ChildEventsAdapter(
     private val items:List<ItemCardEventsModel>
-): RecyclerView.Adapter<ListEventsAdapter.ItemCardCarViewHolder>() {
+): RecyclerView.Adapter<ChildEventsAdapter.ItemCardCarViewHolder>() {
 
     class ItemCardCarViewHolder(private val binding: ItemCardHistoryEventsBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item: ItemCardEventsModel) = with(binding) {

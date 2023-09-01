@@ -1,6 +1,5 @@
 package com.example.coffeestarservicemen.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -9,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
-import com.example.coffeestarservicemen.MainActivity
 import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.CarsAdapter
@@ -31,7 +29,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             numberCar = "b952 0020",
             listFilling = listOf(
                 ItemFillingModel(
-                    image = R.drawable.ic_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
                     color = R.color.yellow_D8B431
                 )
             ),
@@ -43,13 +41,13 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             numberCar = "b952 0021",
             listFilling = listOf(
                 ItemFillingModel(
-                    image = R.drawable.ic_basic_2, listText = listOf(
+                    image = R.drawable.ic_canister_basic_2, listText = listOf(
                         "Молоко","Матча","Какао","Горячий шоколад","Сироп из клубники","Сироп из малины"
                     ),
                     color = R.color.red_E03F36
                 ),
                 ItemFillingModel(
-                    image = R.drawable.ic_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
                     color = R.color.yellow_D8B431
                 )
             ),

@@ -3,10 +3,6 @@ package com.example.coffeestarservicemen.adapter.card_car
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
@@ -48,7 +44,7 @@ class CarsAdapter(
                 rvInformationErrorCar.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvInformationErrorCar.adapter = ErrorAdapterCardCar(items = item.listError)
+                rvInformationErrorCar.adapter = ErrorAdapter(items = item.listError)
             }
 
             card.tvAddress.text = item.address

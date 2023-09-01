@@ -1,19 +1,15 @@
 package com.example.coffeestarservicemen.adapter.card_car
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.databinding.ItemCardCarErrorBinding
-import com.example.coffeestarservicemen.databinding.ItemFillingCardCarsBinding
+import com.example.coffeestarservicemen.databinding.ItemCardErrorBinding
 
-class ErrorAdapterCardCar(
+class ErrorAdapter(
     private val items:List<String>
-): RecyclerView.Adapter<ErrorAdapterCardCar.ItemCardCarViewHolder>() {
+): RecyclerView.Adapter<ErrorAdapter.ItemCardCarViewHolder>() {
 
-    class ItemCardCarViewHolder(private val binding: ItemCardCarErrorBinding): RecyclerView.ViewHolder(binding.root){
+    class ItemCardCarViewHolder(private val binding: ItemCardErrorBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item: String){
             binding.tvError.text = item
         }
@@ -21,7 +17,7 @@ class ErrorAdapterCardCar(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemCardCarViewHolder {
         return ItemCardCarViewHolder(
-            ItemCardCarErrorBinding.inflate( LayoutInflater.from(parent.context), parent, false)
+            ItemCardErrorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

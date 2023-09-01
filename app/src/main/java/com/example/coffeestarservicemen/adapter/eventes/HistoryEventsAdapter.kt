@@ -1,10 +1,7 @@
 package com.example.coffeestarservicemen.adapter.eventes
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
@@ -41,7 +38,7 @@ class HistoryEventsAdapter (
 
         fun bind(item: ItemEventsModel)= with(binding) {
             tvHeader.text = item.date
-            rvListEvent.adapter = ListEventsAdapter(items = item.listCard)
+            rvListEvent.adapter = ChildEventsAdapter(items = item.listCard)
         }
     }
 }

@@ -20,14 +20,14 @@ class CarScreenHistoryFragment : Fragment(R.layout.fragment_car_screen_history) 
             listCard = listOf(
                 ItemCardEventsModel(
                     time = "15:03",
-                    imageBasic = R.drawable.ic_basic_2,
+                    imageBasic = R.drawable.ic_canister_basic_2,
                     imageSignalStatus = R.drawable.ic_signal_online,
                     numberCar = "b952 0029",
                     message = "Скоро закончится сухое молоко"
                 ),
                 ItemCardEventsModel(
                     time = "14:22",
-                    imageBasic = R.drawable.ic_basic_3,
+                    imageBasic = R.drawable.ic_canister_basic_3,
                     imageSignalStatus = R.drawable.ic_signal_online,
                     numberCar = "b952 0029",
                     message = "Скоро закончится вода"
