@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.databinding.ItemCardCarBinding
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationBottom
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationLeft
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationCardCar
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationErrorCar
 import com.example.coffeestarservicemen.model.ItemCarModel
 
 class CarsAdapter(
@@ -19,12 +19,12 @@ class CarsAdapter(
     class ItemCardCarViewHolder(private val binding: ItemCardCarBinding): RecyclerView.ViewHolder(binding.root){
         init {
             binding.rvInformationFillingCar.apply {
-                addItemDecoration(CustomItemDecorationBottom(resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
+                addItemDecoration(CustomItemDecorationCardCar(resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
                 layoutManager = LinearLayoutManager(itemView.context)
             }
 
             binding.rvInformationErrorCar.apply {
-                addItemDecoration(CustomItemDecorationLeft(resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
+                addItemDecoration(CustomItemDecorationErrorCar(resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
                 layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL,false)
             }
         }

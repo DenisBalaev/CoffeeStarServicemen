@@ -8,8 +8,7 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.card_car.ErrorAdapter
 import com.example.coffeestarservicemen.databinding.ItemCardRecyclerviewErrorStatusBinding
 import com.example.coffeestarservicemen.databinding.ItemCardRecyclerviewGeneralStatusBinding
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationRight
-import com.example.coffeestarservicemen.decoration.CustomItemDecorationTop
+import com.example.coffeestarservicemen.decoration.CustomItemDecorationErrorStatus
 import com.example.coffeestarservicemen.model.ListError
 import com.example.coffeestarservicemen.model.ListItemGeneralStatusModel
 import com.example.coffeestarservicemen.model.StatusInterface
@@ -67,8 +66,12 @@ class StatusAdapter(
                     flexDirection = FlexDirection.ROW
                     justifyContent = JustifyContent.FLEX_START
                 }
-                addItemDecoration(CustomItemDecorationRight(resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Error_Status)))
-                addItemDecoration(CustomItemDecorationTop(resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_Error_Status)))
+                addItemDecoration(
+                    CustomItemDecorationErrorStatus(
+                        spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Error_Status),
+                        spaceTop = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_Error_Status)
+                    )
+                )
             }
         }
 
