@@ -19,6 +19,8 @@ class CarsAdapter(
 
     class ItemCardCarViewHolder(private val binding: ItemCardCarBinding): RecyclerView.ViewHolder(binding.root){
 
+        lateinit var dataList:List<String>
+
         init {
             binding.rvInformationFillingCar.apply {
                 addItemDecoration(CustomItemDecorationCardCar(resources.getDimensionPixelSize(R.dimen.marginBottom_recyclerView_Filling_Cad_Car)))
@@ -29,10 +31,31 @@ class CarsAdapter(
             binding.rvInformationErrorCar.apply {
                 addItemDecoration(CustomItemDecorationErrorCar(resources.getDimensionPixelSize(R.dimen.marginStart_recyclerView_Error_Cad_Car)))
                 layoutManager = layoutManagerError
+                addOnLayoutChangeListener(object : View.OnLayoutChangeListener{
+                    override fun onLayoutChange(v: View?, left: Int, top: Int, right: Int, bottom: Int, oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
+                        val lastVisibleItem: Int = layoutManagerError.findLastVisibleItemPosition()
+                        if (lastVisibleItem > 0) {
+                            val count = "+${dataList.size - lastVisibleItem}"
+                            dataList = dataList.toMutableList().slice(0..lastVisibleItem).toMutableList().apply {
+                                this[lastVisibleItem] = count
+                            }
+
+                            binding.rvInformationErrorCar.removeOnLayoutChangeListener(this);
+                            binding.rvInformationErrorCar.apply {
+                                itemAnimator = null
+                                post{(this.adapter as ErrorAdapter).setData(dataList)}
+                            }
+                        }
+                    }
+
+                })
             }
         }
 
         fun bindView(item: ItemCarModel,position: Int, listener: (ItemCarModel) -> Unit)= with(binding){
+
+            dataList = item.listError
+
             ivStatusSignal.setImageResource(item.imageSignalStatus)
             tvNumberCar.text = item.numberCar
 
