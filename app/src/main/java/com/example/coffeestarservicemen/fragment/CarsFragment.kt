@@ -51,7 +51,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
                     color = R.color.yellow_D8B431
                 )
             ),
-            listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error","Slideway №4 error 2"),
+            listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error 1","Slideway №4 error 2"),
             address = "Т/Ц «Авиапарк» 1,5 км", distance = "1,5 км"
         ),
         ItemCarModel(
