@@ -130,15 +130,8 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                             }
                             layoutParams = LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.MATCH_PARENT
-                            ).apply { setMargins((16 * density).toInt(), (12 * density).toInt(), (16 * density).toInt(),0) }
-                            removeItemDecorationAt(0)
-                            addItemDecoration(
-                                CustomItemDecorationFiltrationBottomSheet(
-                                    spaceTop = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_Filtration_BottomSheet),
-                                    spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_BottomSheet)
-                                )
-                            )
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                            ).apply { setMargins((16 * density).toInt(), (4 * density).toInt(), (16 * density).toInt(),0) }
                         }
                     } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
                         Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
@@ -147,15 +140,8 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
                             layoutParams = LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.MATCH_PARENT
+                                LinearLayout.LayoutParams.WRAP_CONTENT
                             ).apply { setMargins(0, (8 * density).toInt(), 0,0) }
-                            removeItemDecorationAt(0)
-                            addItemDecoration(
-                                CustomItemDecorationFiltrationBottomSheet(
-                                    spaceTop = 1000,
-                                    spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_BottomSheet)
-                                )
-                            )
                         }
                     }
                 }
