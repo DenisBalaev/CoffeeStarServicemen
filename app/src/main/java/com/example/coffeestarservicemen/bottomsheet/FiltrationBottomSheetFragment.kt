@@ -93,10 +93,12 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                 )
             }
 
+            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater)
+
             rvCommand.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CommandAdapter(items = listCommand){
-                    Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
+                    bottomSheetGeneral.show(it)
                 }
             }
 
@@ -120,7 +122,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             behavior.addBottomSheetCallback(object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     if (BottomSheetBehavior.STATE_COLLAPSED == newState && isExpanded) {
-                        Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
+                        //Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
                         isExpanded = false
                         /*binding.rvFiltration.apply {
                             layoutManager = FlexboxLayoutManager(context).apply {
@@ -134,7 +136,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                             ).apply { setMargins((16 * density).toInt(), (4 * density).toInt(), (16 * density).toInt(),0) }
                         }*/
                     } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
-                        Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
+                        //Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
                         isExpanded = true
                         /*binding.rvFiltration.apply {
                             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)

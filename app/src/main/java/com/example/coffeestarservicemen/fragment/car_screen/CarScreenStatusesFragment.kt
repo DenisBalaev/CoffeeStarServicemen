@@ -166,7 +166,7 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
         binding.rvStatus.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = StatusAdapter(listNew){
-                bottomSheetFragmentRefill.show(it.toString())
+                bottomSheetFragmentRefill.show(it.name)
             }
         }
     }

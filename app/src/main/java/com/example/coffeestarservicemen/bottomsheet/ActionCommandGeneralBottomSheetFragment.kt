@@ -2,19 +2,13 @@ package com.example.coffeestarservicemen.bottomsheet
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.databinding.BottomDialogActionsCommandsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import javax.sql.StatementEvent
 
-class ActionCommandRefillBottomSheetFragment(val context: Context, val layoutInflater: LayoutInflater) {
+class ActionCommandGeneralBottomSheetFragment(private val context: Context,private val layoutInflater: LayoutInflater) {
     private var bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(context)
-    private var binding:BottomDialogActionsCommandsBinding = BottomDialogActionsCommandsBinding.inflate(layoutInflater)
+    private var binding: BottomDialogActionsCommandsBinding = BottomDialogActionsCommandsBinding.inflate(layoutInflater)
 
     init {
         binding.ivClose.setOnClickListener {
@@ -28,9 +22,9 @@ class ActionCommandRefillBottomSheetFragment(val context: Context, val layoutInf
     fun show(message:String){
         binding.title.text = message
         binding.btnAction.apply {
-            text = "Отметить пополненым"
+            text = "Применить команду"
             setOnClickListener {
-                Toast.makeText(context,"Ингридиент поплнен", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"Команда применена",Toast.LENGTH_LONG).show()
                 bottomSheetDialog.dismiss()
             }
         }
