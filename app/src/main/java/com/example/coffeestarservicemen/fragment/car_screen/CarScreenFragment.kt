@@ -44,7 +44,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             }
 
             ivSend.setOnClickListener {
-                bottomSheetDialog.show(childFragmentManager,bottomSheetDialog.tag)
+                bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
             }
         }
 

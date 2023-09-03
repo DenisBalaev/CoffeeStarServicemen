@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
@@ -78,6 +76,8 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
 
         with(binding){
 
+            search.etSearch.hint = "Команда машине"
+
             rvFiltration.apply {
                 layoutManager = FlexboxLayoutManager(context).apply {
                     flexWrap = FlexWrap.WRAP
@@ -93,12 +93,14 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                 )
             }
 
-            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater,inter)
+            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(
+                requireContext(),layoutInflater,generalCommandInterface
+            )
 
             rvCommand.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CommandAdapter(items = listCommand){
-                    this@FiltrationBottomSheetFragment.binding.root.visibility = View.INVISIBLE
+                    this@FiltrationBottomSheetFragment.binding.root.visibility = View.GONE
                     bottomSheetGeneral.show(it)
                 }
             }
@@ -155,11 +157,10 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     }
 
 
-    private val inter = object :GeneralCommand{
+    private val generalCommandInterface = object :GeneralCommandInterface{
         override fun click() {
             this@FiltrationBottomSheetFragment.binding.root.visibility = View.VISIBLE
         }
-
     }
 
 }

@@ -6,13 +6,18 @@ import android.widget.Toast
 import com.example.coffeestarservicemen.databinding.BottomDialogActionsCommandsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class ActionCommandGeneralBottomSheetFragment(private val context: Context,private val layoutInflater: LayoutInflater,private val interfaceses:GeneralCommand) {
+class ActionCommandGeneralBottomSheetFragment(
+    private val context: Context,
+    private val layoutInflater: LayoutInflater,
+    private val generalCommandInterface: GeneralCommandInterface
+) {
+
     private var bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(context)
     private var binding: BottomDialogActionsCommandsBinding = BottomDialogActionsCommandsBinding.inflate(layoutInflater)
 
     init {
         binding.ivClose.setOnClickListener {
-            interfaceses.click()
+            generalCommandInterface.click()
             bottomSheetDialog.dismiss()
         }
 
@@ -26,7 +31,7 @@ class ActionCommandGeneralBottomSheetFragment(private val context: Context,priva
             text = "Применить команду"
             setOnClickListener {
                 Toast.makeText(context,"Команда применена",Toast.LENGTH_LONG).show()
-                interfaceses.click()
+                generalCommandInterface.click()
                 bottomSheetDialog.dismiss()
             }
         }

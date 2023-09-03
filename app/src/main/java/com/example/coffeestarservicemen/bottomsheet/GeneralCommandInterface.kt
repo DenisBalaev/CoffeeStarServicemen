@@ -1,5 +1,5 @@
 package com.example.coffeestarservicemen.bottomsheet
 
-interface GeneralCommand {
+interface GeneralCommandInterface {
     fun click()
 }
