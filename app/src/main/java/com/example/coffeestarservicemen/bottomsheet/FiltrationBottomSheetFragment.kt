@@ -108,6 +108,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     }
 
     private val observer = ViewTreeObserver.OnGlobalLayoutListener { countingStartingHeightDialog() }
+    private var isExpanded = false
 
     private fun countingStartingHeightDialog(){
         COLLAPSED_HEIGHT = 32 + 10
@@ -118,16 +119,14 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             val behavior = BottomSheetBehavior.from(bottomSheet)
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-            behavior.setBottomSheetCallback(object : BottomSheetCallback() {
+            behavior.addBottomSheetCallback(object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-                    // этот код скрывает кнопку сразу же
-                    // и отображает после того как нижний экран полностью свернется
-                    if (BottomSheetBehavior.STATE_COLLAPSED == newState) {
+                    if (BottomSheetBehavior.STATE_COLLAPSED == newState && isExpanded) {
                         Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
-                    } else if (BottomSheetBehavior.	STATE_EXPANDED == newState) {
+                        isExpanded = false
+                    } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
                         Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
+                        isExpanded = true
                     }
                 }
 
