@@ -2,7 +2,6 @@ package com.example.coffeestarservicemen.bottomsheet
 
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -16,7 +15,6 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
@@ -67,42 +65,14 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
         )
     )
 
-    private fun countingStartingHeightDialog(){
-        val density = requireContext().resources.displayMetrics.density
-
-        dialog?.let {
-            val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
-            val behavior = BottomSheetBehavior.from(bottomSheet)
-
-            behavior.peekHeight = (COLLAPSED_HEIGHT * density).toInt()
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    // Нам не нужны действия по этому колбеку
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    with(binding) {
-                        if (slideOffset > 0) {
-                            // Когда оффсет превышает половину, мы скрываем collapsed layout и делаем видимым expanded
-                            if (slideOffset > 0.5) {
-                                Toast.makeText(requireContext(),"Когда оффсет превышает половину",Toast.LENGTH_LONG).show()
-                            }
-
-                            // Если же оффсет меньше половины, а expanded layout всё ещё виден, то нужно скрывать его и показывать collapsed
-                            if (slideOffset < 0.5) {
-                                Toast.makeText(requireContext(),"Когда оффсет меньше половины",Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }
-                }
-            })
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val listNew = mutableListOf<String>()
+
+        for (item in listCommand){
+            listNew.addAll(item.listCommand)
+        }
+
         with(binding){
 
             rvFiltration.apply {
@@ -123,7 +93,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             rvCommand.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CommandAdapter(items = listCommand){
-                    Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
                 }
             }
         }
