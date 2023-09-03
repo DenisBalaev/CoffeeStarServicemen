@@ -26,7 +26,7 @@
                 android:id="@+id/iv_plus"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_plus"
+                android:src="@drawable/ic_plus_button"
                 android:scaleType="fitXY"
                 android:layout_centerVertical="true"/>
 

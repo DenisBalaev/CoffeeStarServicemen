@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.status.StatusAdapter
+import com.example.coffeestarservicemen.bottomsheet.ActionCommandRefillBottomSheetFragment
 import com.example.coffeestarservicemen.bottomsheet.FiltrationBottomSheetFragment
 import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragment
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenStatusesBinding
@@ -151,7 +152,6 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val bottomSheetDialog = FiltrationBottomSheetFragment()
 
         val lisError = list.listError
         val listGeneral = list.listGeneral
@@ -161,10 +161,12 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
             addAll(listGeneral)
         }
 
+        val bottomSheetFragmentRefill = ActionCommandRefillBottomSheetFragment(requireContext(),layoutInflater)
+
         binding.rvStatus.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = StatusAdapter(listNew){
-                bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+                bottomSheetFragmentRefill.show(it.toString())
             }
         }
     }

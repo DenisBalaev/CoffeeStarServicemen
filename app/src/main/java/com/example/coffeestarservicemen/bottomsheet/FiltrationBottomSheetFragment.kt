@@ -122,7 +122,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     if (BottomSheetBehavior.STATE_COLLAPSED == newState && isExpanded) {
                         Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
                         isExpanded = false
-                        binding.rvFiltration.apply {
+                        /*binding.rvFiltration.apply {
                             layoutManager = FlexboxLayoutManager(context).apply {
                                 flexWrap = FlexWrap.WRAP
                                 flexDirection = FlexDirection.ROW
@@ -132,17 +132,17 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                                 LinearLayout.LayoutParams.MATCH_PARENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT
                             ).apply { setMargins((16 * density).toInt(), (4 * density).toInt(), (16 * density).toInt(),0) }
-                        }
+                        }*/
                     } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
                         Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
                         isExpanded = true
-                        binding.rvFiltration.apply {
+                        /*binding.rvFiltration.apply {
                             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
                             layoutParams = LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
+                                LinearLayout.LayoutParams.MATCH_PARENT
                             ).apply { setMargins(0, (8 * density).toInt(), 0,0) }
-                        }
+                        }*/
                     }
                 }
 
