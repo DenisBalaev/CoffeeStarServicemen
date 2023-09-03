@@ -164,7 +164,6 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
         binding.rvStatus.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = StatusAdapter(listNew){
-                Toast.makeText(requireContext(),"Click plus image",Toast.LENGTH_LONG).show()
                 bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
             }
         }

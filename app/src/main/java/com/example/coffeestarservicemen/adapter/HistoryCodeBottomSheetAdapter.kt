@@ -1,16 +1,14 @@
 package com.example.coffeestarservicemen.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.databinding.ItemBottomSheetHistoryCodeBinding
 import com.example.coffeestarservicemen.model.ItemsHistoryCodeModel
 
-class HistoryCodeAdapter(
+class HistoryCodeBottomSheetAdapter(
     private val items:List<ItemsHistoryCodeModel>
-):RecyclerView.Adapter<HistoryCodeAdapter.ItemMainMenuViewHolder>() {
+):RecyclerView.Adapter<HistoryCodeBottomSheetAdapter.ItemMainMenuViewHolder>() {
 
     class ItemMainMenuViewHolder(private val binding: ItemBottomSheetHistoryCodeBinding):RecyclerView.ViewHolder(binding.root){
         fun bindView(item:ItemsHistoryCodeModel) = with(binding){

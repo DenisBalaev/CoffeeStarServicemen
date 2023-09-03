@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.adapter.HistoryCodeAdapter
+import com.example.coffeestarservicemen.adapter.HistoryCodeBottomSheetAdapter
 import com.example.coffeestarservicemen.databinding.BottomDialogHistoryCodeBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationHistoryCode
 import com.example.coffeestarservicemen.model.ItemsHistoryCodeModel
@@ -39,7 +39,7 @@ class HistoryCodeBottomSheetFragment : BottomSheetDialogFragment(R.layout.bottom
         binding.rvCodeHistory.apply {
             dividerDrawable?.let { CustomItemDecorationHistoryCode(space = space, divider = it) }?.let { addItemDecoration(it) }
             layoutManager = LinearLayoutManager(requireContext())
-            adapter =  HistoryCodeAdapter(items = list)
+            adapter =  HistoryCodeBottomSheetAdapter(items = list)
         }
     }
 
