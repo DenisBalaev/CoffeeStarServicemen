@@ -64,7 +64,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             imageSignalStatus = R.drawable.ic_signal_online,
             numberCar = "b952 0023",
             listFilling = listOf(),
-            listError = listOf(), address = "Т/Ц «Авиапарк» 3,5 км", distance = "3,5 км"
+            listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error","Slideway №4 error 2"), address = "Т/Ц «Авиапарк» 3,5 км", distance = "3,5 км"
         )
     )
 

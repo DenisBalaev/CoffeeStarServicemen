@@ -2,6 +2,8 @@ package com.example.coffeestarservicemen.bottomsheet
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -15,6 +17,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
@@ -96,9 +99,41 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     Toast.makeText(requireContext(),it, Toast.LENGTH_LONG).show()
                 }
             }
+
+            rvFiltration.viewTreeObserver.addOnGlobalLayoutListener(observer)
         }
 
-        //countingStartingHeightDialog()
+    }
 
+    private val observer = ViewTreeObserver.OnGlobalLayoutListener { countingStartingHeightDialog() }
+
+    private fun countingStartingHeightDialog(){
+        COLLAPSED_HEIGHT = 32 + 10
+        val density = requireContext().resources.displayMetrics.density
+
+        dialog?.let {
+            val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
+            val behavior = BottomSheetBehavior.from(bottomSheet)
+            behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
+            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    with(binding) {
+                        if (slideOffset > 0) {
+                            if(slideOffset < 0.2f && slideOffset > 0){
+                                Toast.makeText(context,"Равно", Toast.LENGTH_LONG).show()
+                            }else if (slideOffset < 0.5) {
+                                Toast.makeText(context,"Меньше",Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            })
+        }
     }
 }
