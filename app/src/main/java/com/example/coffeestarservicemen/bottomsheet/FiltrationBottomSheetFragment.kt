@@ -18,7 +18,9 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+
 
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
@@ -117,22 +119,19 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
-            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-
+            behavior.setBottomSheetCallback(object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
-                }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    with(binding) {
-                        if (slideOffset > 0) {
-                            if(slideOffset < 0.2f && slideOffset > 0){
-                                Toast.makeText(context,"Равно", Toast.LENGTH_LONG).show()
-                            }else if (slideOffset < 0.5) {
-                                Toast.makeText(context,"Меньше",Toast.LENGTH_LONG).show()
-                            }
-                        }
+                    // этот код скрывает кнопку сразу же
+                    // и отображает после того как нижний экран полностью свернется
+                    if (BottomSheetBehavior.STATE_COLLAPSED == newState) {
+                        Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
+                    } else if (BottomSheetBehavior.	STATE_EXPANDED == newState) {
+                        Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
                     }
                 }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
             })
         }
     }
