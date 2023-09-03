@@ -93,11 +93,12 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                 )
             }
 
-            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater)
+            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater,inter)
 
             rvCommand.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CommandAdapter(items = listCommand){
+                    this@FiltrationBottomSheetFragment.binding.root.visibility = View.INVISIBLE
                     bottomSheetGeneral.show(it)
                 }
             }
@@ -152,4 +153,13 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             })
         }
     }
+
+
+    private val inter = object :GeneralCommand{
+        override fun click() {
+            this@FiltrationBottomSheetFragment.binding.root.visibility = View.VISIBLE
+        }
+
+    }
+
 }
