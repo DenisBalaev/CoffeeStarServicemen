@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -25,10 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    private val list = mutableListOf<String>(
-        "All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-    )
-
+    private val list = mutableListOf<String>("All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
@@ -124,9 +122,41 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     if (BottomSheetBehavior.STATE_COLLAPSED == newState && isExpanded) {
                         Toast.makeText(requireContext(),"Нижний лист свернут.",Toast.LENGTH_LONG).show()
                         isExpanded = false
+                        binding.rvFiltration.apply {
+                            layoutManager = FlexboxLayoutManager(context).apply {
+                                flexWrap = FlexWrap.WRAP
+                                flexDirection = FlexDirection.ROW
+                                justifyContent = JustifyContent.FLEX_START
+                            }
+                            layoutParams = LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.MATCH_PARENT
+                            ).apply { setMargins((16 * density).toInt(), (12 * density).toInt(), (16 * density).toInt(),0) }
+                            removeItemDecorationAt(0)
+                            addItemDecoration(
+                                CustomItemDecorationFiltrationBottomSheet(
+                                    spaceTop = resources.getDimensionPixelSize(R.dimen.marginTop_recyclerView_Filtration_BottomSheet),
+                                    spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_BottomSheet)
+                                )
+                            )
+                        }
                     } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
                         Toast.makeText(requireContext(),"Расширен",Toast.LENGTH_LONG).show()
                         isExpanded = true
+                        binding.rvFiltration.apply {
+                            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                            layoutParams = LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.MATCH_PARENT
+                            ).apply { setMargins(0, (8 * density).toInt(), 0,0) }
+                            removeItemDecorationAt(0)
+                            addItemDecoration(
+                                CustomItemDecorationFiltrationBottomSheet(
+                                    spaceTop = 1000,
+                                    spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_BottomSheet)
+                                )
+                            )
+                        }
                     }
                 }
 
