@@ -41,8 +41,8 @@
         android:background="@drawable/rounder_button_action_command"
         android:minHeight="0dp"
         android:paddingVertical="18dp"
-        tools:text="Применить команду"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:text="Применить команду" />
 
 </RelativeLayout>

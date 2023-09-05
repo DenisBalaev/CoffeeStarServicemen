@@ -1,11 +1,13 @@
 package com.example.coffeestarservicemen.bottomsheet
 
+import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
@@ -19,15 +21,22 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    private val list = mutableListOf<String>("All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
+    private val list = mutableListOf<String>(
+        "All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
+        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
@@ -69,6 +78,11 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
         )
     )
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NORMAL,R.style.DialogStyle)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val listNew = mutableListOf<String>()
@@ -79,7 +93,9 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
 
         with(binding){
 
-            search.etSearch.hint = "Команда машине"
+            search.etSearch.apply {
+                hint = "Команда машине"
+            }
 
             rvFiltration.apply {
                 layoutManager = FlexboxLayoutManager(requireContext()).apply {
@@ -98,26 +114,19 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                 )
             }
 
-            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(
-                requireContext(),layoutInflater,generalCommandInterface
-            )
-
+            val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater)
             rvCommand.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = CommandAdapter(items = listCommand){
-                    this@FiltrationBottomSheetFragment.binding.root.visibility = View.GONE
                     bottomSheetGeneral.show(it)
                 }
             }
 
             rvFiltration.viewTreeObserver.addOnGlobalLayoutListener(observer)
         }
-
     }
 
     private val observer = ViewTreeObserver.OnGlobalLayoutListener { countingStartingHeightDialog() }
-
-    private var isExpanded = false
     private lateinit var behavior:BottomSheetBehavior<FrameLayout>
 
     private fun countingStartingHeightDialog(){
@@ -128,46 +137,6 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
             behavior = BottomSheetBehavior.from(bottomSheet)
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-            /*behavior.addBottomSheetCallback(object : BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    if (BottomSheetBehavior.STATE_COLLAPSED == newState && isExpanded) {
-                        isExpanded = false
-                        binding.rvFiltration.apply {
-                            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT).apply {
-                                setMargins((16 * density).toInt(), (4 * density).toInt(), (16 * density).toInt(),0)
-                            }
-                            layoutManager = FlexboxLayoutManager(requireContext()).apply {
-                                flexWrap = FlexWrap.WRAP
-                                flexDirection = FlexDirection.ROW
-                                justifyContent = JustifyContent.FLEX_START
-                            }
-                        }
-                        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                    } else if (BottomSheetBehavior.	STATE_EXPANDED == newState && !isExpanded) {
-                        isExpanded = true
-                        binding.rvFiltration.apply {
-                            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT).apply {
-                                setMargins(0, 0, 0,0)
-                            }
-                            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                        }
-                        behavior.state = BottomSheetBehavior.STATE_EXPANDED
-                    }
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-            })*/
         }
     }
-
-
-    private val generalCommandInterface = object :GeneralCommandInterface{
-        override fun click() {
-            behavior.state = BottomSheetBehavior.STATE_EXPANDED
-            this@FiltrationBottomSheetFragment.binding.root.visibility = View.VISIBLE
-        }
-    }
-
 }

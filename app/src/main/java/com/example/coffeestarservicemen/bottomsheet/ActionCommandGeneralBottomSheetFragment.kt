@@ -8,8 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class ActionCommandGeneralBottomSheetFragment(
     private val context: Context,
-    private val layoutInflater: LayoutInflater,
-    private val generalCommandInterface: GeneralCommandInterface
+    private val layoutInflater: LayoutInflater
 ) {
 
     private var bottomSheetDialog: BottomSheetDialog = BottomSheetDialog(context)
@@ -17,7 +16,6 @@ class ActionCommandGeneralBottomSheetFragment(
 
     init {
         binding.ivClose.setOnClickListener {
-            generalCommandInterface.click()
             bottomSheetDialog.dismiss()
         }
 
@@ -31,7 +29,6 @@ class ActionCommandGeneralBottomSheetFragment(
             text = "Применить команду"
             setOnClickListener {
                 Toast.makeText(context,"Команда применена",Toast.LENGTH_LONG).show()
-                generalCommandInterface.click()
                 bottomSheetDialog.dismiss()
             }
         }
