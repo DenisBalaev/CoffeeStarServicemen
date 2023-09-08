@@ -13,20 +13,15 @@ import com.example.coffeestarservicemen.model.ItemCarModel
 import com.example.coffeestarservicemen.model.ItemFillingModel
 
 class FillingCardCarAdapter(
-    private val items:List<ItemFillingModel>,
-    private val listener:()->Unit
+    private val items:List<ItemFillingModel>
 ): RecyclerView.Adapter<FillingCardCarAdapter.ItemCardCarViewHolder>() {
 
     class ItemCardCarViewHolder(private val binding: ItemFillingCardCarsBinding): RecyclerView.ViewHolder(binding.root){
-        fun bindView(item: ItemFillingModel,listener: () -> Unit)= with(binding){
+        fun bindView(item: ItemFillingModel)= with(binding){
             ivFilling.setImageResource(item.image)
             tvFilling.apply {
                 text = item.listText.joinToString(separator = " • ")
                 setTextColor(ContextCompat.getColor(itemView.context,item.color))
-            }
-
-            itemView.setOnClickListener {
-                listener()
             }
         }
     }
@@ -38,7 +33,7 @@ class FillingCardCarAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemCardCarViewHolder, position: Int) {
-        holder.bindView(items[position],listener)
+        holder.bindView(items[position])
     }
 
     override fun getItemCount(): Int = items.size

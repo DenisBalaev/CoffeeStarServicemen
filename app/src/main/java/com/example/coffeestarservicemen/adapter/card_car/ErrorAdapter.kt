@@ -7,16 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.databinding.ItemCardErrorBinding
 
 class ErrorAdapter(
-    private var items:List<String>,
-    private val listener:()->Unit
+    private var items:List<String>
 ): RecyclerView.Adapter<ErrorAdapter.ItemCardCarViewHolder>() {
 
     class ItemCardCarViewHolder(private val binding: ItemCardErrorBinding): RecyclerView.ViewHolder(binding.root){
-        fun bindView(item: String,listener: () -> Unit){
+        fun bindView(item: String){
             binding.tvError.text = item
-            itemView.setOnClickListener {
-                listener()
-            }
         }
     }
 
@@ -27,7 +23,7 @@ class ErrorAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemCardCarViewHolder, position: Int) {
-        holder.bindView(items[position],listener)
+        holder.bindView(items[position])
     }
 
     override fun getItemCount(): Int = items.size

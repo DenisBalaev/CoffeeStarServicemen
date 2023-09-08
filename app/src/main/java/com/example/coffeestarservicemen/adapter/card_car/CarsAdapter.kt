@@ -64,18 +64,14 @@ class CarsAdapter(
                 rvInformationFillingCar.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvInformationFillingCar.adapter = FillingCardCarAdapter(item.listFilling){
-                    listener(item)
-                }
+                rvInformationFillingCar.adapter = FillingCardCarAdapter(item.listFilling)
             }
 
             if (item.listError.isEmpty()) {
                 rvInformationErrorCar.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvInformationErrorCar.adapter = ErrorAdapter(items = item.listError){
-                    listener(item)
-                }
+                rvInformationErrorCar.adapter = ErrorAdapter(items = item.listError)
             }
 
             cardLocation.tvAddress.text = item.address
@@ -88,6 +84,10 @@ class CarsAdapter(
 
             itemView.setOnClickListener {
                 listener(item)
+            }
+
+            cardLocation.card.setOnClickListener {
+                Toast.makeText(itemView.context,"Map",Toast.LENGTH_LONG).show()
             }
         }
     }

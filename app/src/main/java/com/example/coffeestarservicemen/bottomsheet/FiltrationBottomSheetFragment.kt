@@ -1,16 +1,12 @@
 package com.example.coffeestarservicemen.bottomsheet
 
-import android.app.Dialog
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.Window
-import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,6 +76,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
         setStyle(DialogFragment.STYLE_NORMAL,R.style.DialogStyle)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
 
