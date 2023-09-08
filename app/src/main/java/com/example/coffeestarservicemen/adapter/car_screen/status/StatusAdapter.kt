@@ -79,7 +79,7 @@ class StatusAdapter(
 
         fun bindView(item: ListError)= with(binding){
             tvTitle.text = item.title
-            rvError.adapter = ErrorAdapter(item.listError)
+            rvError.adapter = ErrorAdapter(item.listError){}
         }
     }
 

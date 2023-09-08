@@ -2,8 +2,10 @@ package com.example.coffeestarservicemen.adapter.card_car
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
@@ -47,7 +49,6 @@ class CarsAdapter(
                             }
                         }
                     }
-
                 })
             }
         }
@@ -63,18 +64,22 @@ class CarsAdapter(
                 rvInformationFillingCar.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvInformationFillingCar.adapter = FillingCardCarAdapter(item.listFilling)
+                rvInformationFillingCar.adapter = FillingCardCarAdapter(item.listFilling){
+                    listener(item)
+                }
             }
 
             if (item.listError.isEmpty()) {
                 rvInformationErrorCar.visibility = View.GONE
             }else{
                 tvBriefStatusCar.visibility = View.GONE
-                rvInformationErrorCar.adapter = ErrorAdapter(items = item.listError)
+                rvInformationErrorCar.adapter = ErrorAdapter(items = item.listError){
+                    listener(item)
+                }
             }
 
-            card.tvAddress.text = item.address
-            card.tvDistance.text = item.distance
+            cardLocation.tvAddress.text = item.address
+            cardLocation.tvDistance.text = item.distance
 
             if (position == 0) {
                 containerDiscovery.visibility = View.VISIBLE
@@ -82,10 +87,6 @@ class CarsAdapter(
             }
 
             itemView.setOnClickListener {
-                listener(item)
-            }
-
-            cardCar.setOnClickListener {
                 listener(item)
             }
         }

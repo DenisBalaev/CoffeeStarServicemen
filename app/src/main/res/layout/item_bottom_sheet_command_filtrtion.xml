@@ -10,4 +10,5 @@
     android:background="@drawable/rounder_filter_bottom_sheet"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
+    android:maxLines="1"
     />

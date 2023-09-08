@@ -1,10 +1,15 @@
 package com.example.coffeestarservicemen.bottomsheet
 
 import android.app.Dialog
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.Window
 import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.fragment.app.DialogFragment
@@ -28,15 +33,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
     private val list = mutableListOf<String>(
-        "All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other"
-        ,"Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
+        "All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
@@ -84,17 +81,16 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        val listNew = mutableListOf<String>()
-
-        for (item in listCommand){
-            listNew.addAll(item.listCommand)
-        }
-
         with(binding){
 
             search.etSearch.apply {
                 hint = "Команда машине"
+                setOnFocusChangeListener { _, _ ->
+                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+                setOnClickListener {
+                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
             }
 
             rvFiltration.apply {

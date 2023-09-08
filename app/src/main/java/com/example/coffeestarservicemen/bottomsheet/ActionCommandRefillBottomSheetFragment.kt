@@ -22,7 +22,6 @@ class ActionCommandRefillBottomSheetFragment(val context: Context, val layoutInf
         }
 
         bottomSheetDialog.setContentView(binding.root)
-        bottomSheetDialog.setCancelable(false)
     }
 
     fun show(message:String){

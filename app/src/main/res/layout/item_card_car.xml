@@ -63,7 +63,7 @@
             android:layout_marginTop="16dp" />
 
         <include
-            android:id="@+id/card"
+            android:id="@+id/card_location"
             layout="@layout/card_location_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             android:id="@+id/container_discovery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/card"
+            android:layout_below="@id/card_location"
             android:background="@drawable/rounder_card_car_discovery"
             android:gravity="center_horizontal"
             android:visibility="gone">
