@@ -28,14 +28,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
         blur()
         val bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
+        mAnimator = TimeAnimator()
+        mAnimator!!.setTimeListener(this@ProfileFragment)
+        val layerDrawable = binding.btnCodeBlur.background as LayerDrawable
+        mClipDrawable = layerDrawable.findDrawableByLayerId(R.id.clip_drawable) as ClipDrawable
+
         with(binding) {
             btnCodeBlur.setOnClickListener {
                 btnCodeBlur.text = "Скрыть код"
                 noBlur()
-                mAnimator = TimeAnimator()
-                mAnimator!!.setTimeListener(this@ProfileFragment)
-                val layerDrawable = binding.btnCodeBlur.background as LayerDrawable
-                mClipDrawable = layerDrawable.findDrawableByLayerId(R.id.clip_drawable) as ClipDrawable
                 animationButton()
             }
 
@@ -48,12 +49,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
     override fun onTimeUpdate(animation: TimeAnimator?, totalTime: Long, deltaTime: Long) {
         mClipDrawable!!.level = mCurrentLevel
         if (mCurrentLevel >= MAX_LEVEL) {
+            mClipDrawable!!.level = 0
             mAnimator!!.cancel()
-            binding.btnCodeBlur.apply {
-                background = ContextCompat.getDrawable(requireContext(),R.drawable.rounder_button_background_animation_profile)
-                text = "Показать код"
-            }
             blur()
+            binding.btnCodeBlur.text = "Показать код"
         } else {
             mCurrentLevel = MAX_LEVEL.coerceAtMost(mCurrentLevel + LEVEL_INCREMENT)
         }
@@ -88,7 +87,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
     }
 
     companion object {
-        private val LEVEL_INCREMENT = 100
-        private val MAX_LEVEL = 10000
+        private val LEVEL_INCREMENT = 70
+        private val MAX_LEVEL = 11000
     }
 }
