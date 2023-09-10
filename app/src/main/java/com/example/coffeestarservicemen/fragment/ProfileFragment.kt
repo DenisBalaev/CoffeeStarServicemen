@@ -1,11 +1,13 @@
 package com.example.coffeestarservicemen.fragment
 
 import android.animation.TimeAnimator
+import android.animation.ValueAnimator
 import android.graphics.BlurMaskFilter
 import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.View
+import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,19 +19,15 @@ import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragme
 import com.example.coffeestarservicemen.databinding.FragmentProfileBinding
 
 
-class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeListener {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
 
-    private var mAnimator: TimeAnimator? = null
-    private var mCurrentLevel = 0
     private var mClipDrawable: ClipDrawable? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         blur()
         val bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
-        mAnimator = TimeAnimator()
-        mAnimator!!.setTimeListener(this@ProfileFragment)
         val layerDrawable = binding.btnCodeBlur.background as LayerDrawable
         mClipDrawable = layerDrawable.findDrawableByLayerId(R.id.clip_drawable) as ClipDrawable
 
@@ -46,22 +44,26 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
         }
     }
 
-    override fun onTimeUpdate(animation: TimeAnimator?, totalTime: Long, deltaTime: Long) {
-        mClipDrawable!!.level = mCurrentLevel
-        if (mCurrentLevel >= MAX_LEVEL) {
-            mClipDrawable!!.level = 0
-            mAnimator!!.cancel()
-            blur()
-            binding.btnCodeBlur.text = "Показать код"
-        } else {
-            mCurrentLevel = MAX_LEVEL.coerceAtMost(mCurrentLevel + LEVEL_INCREMENT)
+    private val animator = ValueAnimator.ofInt(0, 10000).apply {
+        addUpdateListener {
+            mClipDrawable!!.level = it.animatedValue as Int
         }
+        addListener(
+            onEnd = {
+                mClipDrawable!!.level = 0
+                binding.btnCodeBlur.text = "Показать код"
+                blur()
+            },
+            onStart = {
+                mClipDrawable!!.level = 0
+            }
+        )
+        duration = 20000
     }
 
     private fun animationButton(){
-        if (!mAnimator!!.isRunning) {
-            mCurrentLevel = 0
-            mAnimator!!.start()
+        if (!animator!!.isRunning) {
+            animator.start()
         }
     }
 
@@ -71,6 +73,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
             activity = (activity as BottomNavInterface),
             idLayout = R.layout.fragment_profile
         )
+    }
+
+    override fun onDestroy() {
+        animator.cancel()
+        mClipDrawable!!.level = 0
+        super.onDestroy()
     }
 
     private fun blur(){
@@ -84,10 +92,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
     private fun noBlur(){
         binding.tvPersonCode.paint.maskFilter = null
         binding.tvPersonCode.invalidate()
-    }
-
-    companion object {
-        private val LEVEL_INCREMENT = 70
-        private val MAX_LEVEL = 11000
     }
 }
