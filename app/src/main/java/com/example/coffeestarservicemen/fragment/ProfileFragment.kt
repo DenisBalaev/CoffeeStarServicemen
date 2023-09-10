@@ -25,8 +25,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
     private var mClipDrawable: ClipDrawable? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mAnimator = TimeAnimator()
-        mAnimator!!.setTimeListener(this)
         blur()
         val bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
@@ -34,6 +32,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
             btnCodeBlur.setOnClickListener {
                 btnCodeBlur.text = "Скрыть код"
                 noBlur()
+                mAnimator = TimeAnimator()
+                mAnimator!!.setTimeListener(this@ProfileFragment)
                 val layerDrawable = binding.btnCodeBlur.background as LayerDrawable
                 mClipDrawable = layerDrawable.findDrawableByLayerId(R.id.clip_drawable) as ClipDrawable
                 animationButton()
@@ -50,7 +50,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),TimeAnimator.TimeLis
         if (mCurrentLevel >= MAX_LEVEL) {
             mAnimator!!.cancel()
             binding.btnCodeBlur.apply {
-                background = ContextCompat.getDrawable(context,R.drawable.rounder_button_background_animation_profile)
+                background = ContextCompat.getDrawable(requireContext(),R.drawable.rounder_button_background_animation_profile)
                 text = "Показать код"
             }
             blur()
