@@ -8,7 +8,7 @@ import com.example.coffeestarservicemen.databinding.ItemBottomSheetCommandFiltrt
 
 class FiltrationBottomSheetAdapter(
     private val items:List<String>,
-    private var listener:()-> Unit
+    private var listener:(String)-> Unit
 ):RecyclerView.Adapter<FiltrationBottomSheetAdapter.ViewHolder>() {
 
     var selectedPosition = 1
@@ -35,7 +35,7 @@ class FiltrationBottomSheetAdapter(
         holder.itemView.setOnClickListener {
             selectedPosition = position
             notifyDataSetChanged()
-            listener()
+            listener(items[position])
         }
     }
 

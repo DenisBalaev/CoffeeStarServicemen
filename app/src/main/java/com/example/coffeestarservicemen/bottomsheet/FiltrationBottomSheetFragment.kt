@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -28,8 +29,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    private val list = mutableListOf<String>(
-        "All","Cleaning","Cup&Lid","Products","Door","Sell","Ice","Other")
+    private val list = mutableListOf<String>("All","Cleaning&Tuning","Cup&Lid","Products","Door","Sell","Ice","Other")
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
@@ -55,7 +55,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             listCommand = listOf("Close/open door","Small door test")
         ),
         ItemCommand(
-            title = "Sale",
+            title = "Sell",
             listCommand = listOf("Start prohibition","Close prohibition")
         ),
         ItemCommand(
@@ -96,8 +96,14 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     flexDirection = FlexDirection.ROW
                     justifyContent = JustifyContent.FLEX_START
                 }
-                adapter = FiltrationBottomSheetAdapter(items = list){
+                adapter = FiltrationBottomSheetAdapter(items = list){itemFilter->
                     behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    if (itemFilter != "All") {
+                        val position = listCommand.indices.find { listCommand[it].title == itemFilter }
+                        position?.let { rvCommand.scrollToPosition(it) }
+                    }else{
+                        rvCommand.scrollToPosition(0)
+                    }
                 }
                 addItemDecoration(
                     CustomItemDecorationFiltrationBottomSheet(
