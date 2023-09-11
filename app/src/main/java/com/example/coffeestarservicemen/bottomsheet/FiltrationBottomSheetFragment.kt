@@ -29,18 +29,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    private val list = mutableListOf<String>("All","Cleaning&Tuning","Cup&Lid","Products","Door","Sell","Ice","Other")
+    private val list = mutableListOf<String>("All","Cup&Lid","Products","Door","Sell","Ice","Other","Cleaning&Tuning")
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
             listCommand = listOf(
                 "Drop cups","Drop lids","Home","Progress","Drop cup release","Empty cup move forward","Remote drop cup","Gland test"
-            )
-        ),
-        ItemCommand(
-            title = "Cleaning&Tuning",
-            listCommand = listOf(
-                "Clean","Clean mixer","Clean brewer","Clean syrup pump","Pipe emptying","Syrop pipe exhaust","Syrup clean"
             )
         ),
         ItemCommand(
@@ -68,6 +62,12 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
         ItemCommand(
             title = "Other",
             listCommand = listOf("Get goods information","Tap water")
+        ),
+        ItemCommand(
+            title = "Cleaning&Tuning",
+            listCommand = listOf(
+                "Clean","Clean mixer","Clean brewer","Clean syrup pump","Pipe emptying","Syrop pipe exhaust","Syrup clean"
+            )
         )
     )
 
@@ -78,8 +78,9 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
+        val linearLayoutManagerCommand = LinearLayoutManager(requireContext())
 
+        with(binding){
             search.etSearch.apply {
                 hint = "Команда машине"
                 setOnFocusChangeListener { _, _ ->
@@ -100,9 +101,9 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     behavior.state = BottomSheetBehavior.STATE_EXPANDED
                     if (itemFilter != "All") {
                         val position = listCommand.indices.find { listCommand[it].title == itemFilter }
-                        position?.let { rvCommand.scrollToPosition(it) }
+                        position?.let { linearLayoutManagerCommand.scrollToPositionWithOffset(it,0) }
                     }else{
-                        rvCommand.scrollToPosition(0)
+                        linearLayoutManagerCommand.scrollToPositionWithOffset(0,0)
                     }
                 }
                 addItemDecoration(
@@ -115,7 +116,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
 
             val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater)
             rvCommand.apply {
-                layoutManager = LinearLayoutManager(requireContext())
+                layoutManager = linearLayoutManagerCommand
                 adapter = CommandAdapter(items = listCommand){
                     bottomSheetGeneral.show(it)
                 }
