@@ -61,7 +61,7 @@
         android:textColor="@color/white_F5F5F5"
         android:layout_margin="16dp"
         android:paddingVertical="18dp"
-        android:background="@drawable/rounder_btn_red_note"
+        android:background="@drawable/rounder_button_action_command"
         android:minHeight="0dp"
         />
 
