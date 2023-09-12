@@ -156,7 +156,7 @@
                         android:textColor="@color/white"
                         android:textSize="32sp"
                         android:layout_marginHorizontal="23dp"
-                        android:layout_marginVertical="13sp"/>
+                        android:layout_marginVertical="13dp"/>
 
                 </androidx.cardview.widget.CardView>
 

@@ -23,6 +23,7 @@ class CarScreenNotesFragment : Fragment(R.layout.fragment_car_screen_notes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         with(binding){
+
             rvNotes.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = NotesAdapter(items = listNote)
