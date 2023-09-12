@@ -61,7 +61,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 mClipDrawable!!.level = 0
             }
         )
-        duration = 20000
+        duration = 11000
     }
 
     private fun animationButton(){
