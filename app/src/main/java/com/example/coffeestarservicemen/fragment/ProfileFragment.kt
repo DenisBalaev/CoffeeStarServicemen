@@ -1,6 +1,5 @@
 package com.example.coffeestarservicemen.fragment
 
-import android.animation.TimeAnimator
 import android.animation.ValueAnimator
 import android.graphics.BlurMaskFilter
 import android.graphics.drawable.AnimationDrawable
@@ -8,12 +7,11 @@ import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.core.animation.addListener
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
-import com.example.coffeestarservicemen.MainActivity
 import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragment
@@ -48,6 +46,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private val animator = ValueAnimator.ofInt(0, 10000).apply {
+        duration = 11000
+        interpolator = LinearInterpolator()
         addUpdateListener {
             mClipDrawable!!.level = it.animatedValue as Int
         }
@@ -61,7 +61,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 mClipDrawable!!.level = 0
             }
         )
-        duration = 11000
     }
 
     private fun animationButton(){
