@@ -3,6 +3,7 @@ package com.example.coffeestarservicemen.fragment
 import android.animation.TimeAnimator
 import android.animation.ValueAnimator
 import android.graphics.BlurMaskFilter
+import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
@@ -23,11 +24,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
 
     private var mClipDrawable: ClipDrawable? = null
+    private lateinit var animBlur: AnimationDrawable
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        blur()
+        animBlur = (binding.imageBlur.background as AnimationDrawable)
         val bottomSheetDialog = HistoryCodeBottomSheetFragment()
 
+        blur()
         val layerDrawable = binding.btnCodeBlur.background as LayerDrawable
         mClipDrawable = layerDrawable.findDrawableByLayerId(R.id.clip_drawable) as ClipDrawable
 
@@ -83,14 +86,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun blur(){
         with(binding) {
-            val radius = tvPersonCode.textSize
+            val radius = tvPersonCode.textSize / 4
             val filter = BlurMaskFilter(radius, BlurMaskFilter.Blur.NORMAL)
             tvPersonCode.paint.maskFilter = filter
             tvPersonCode.invalidate()
+            imageBlur.visibility = View.VISIBLE
+            animBlur.start()
         }
     }
     private fun noBlur(){
         binding.tvPersonCode.paint.maskFilter = null
         binding.tvPersonCode.invalidate()
+        binding.imageBlur.visibility = View.GONE
+        animBlur.stop()
     }
 }
