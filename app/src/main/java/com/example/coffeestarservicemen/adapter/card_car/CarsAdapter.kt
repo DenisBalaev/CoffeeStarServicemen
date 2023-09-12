@@ -22,6 +22,7 @@ class CarsAdapter(
     class ItemCardCarViewHolder(private val binding: ItemCardCarBinding): RecyclerView.ViewHolder(binding.root){
 
         lateinit var dataList:List<String>
+        private var indexLastVisibleItemPosition = 0
 
         init {
             binding.rvInformationFillingCar.apply {
@@ -36,20 +37,39 @@ class CarsAdapter(
                 addOnLayoutChangeListener(object : View.OnLayoutChangeListener{
                     override fun onLayoutChange(v: View?, left: Int, top: Int, right: Int, bottom: Int, oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
                         val lastVisibleItem: Int = layoutManagerError.findLastVisibleItemPosition()
-                        if (lastVisibleItem > 0) {
-                            val count = "+${dataList.size - lastVisibleItem}"
-                            dataList = dataList.toMutableList().slice(0..lastVisibleItem).toMutableList().apply {
-                                this[lastVisibleItem] = count
+                        val lastVisibleItemCompletely: Int = layoutManagerError.findLastCompletelyVisibleItemPosition()
+                        indexLastVisibleItemPosition = lastVisibleItem
+                        if (lastVisibleItem > 0 && lastVisibleItemCompletely < dataList.size - 1 && lastVisibleItem != lastVisibleItemCompletely) {
+                            update(dataList, lastVisibleItem)
+                        }
+
+                        binding.rvInformationErrorCar.removeOnLayoutChangeListener(this);
+                    }
+                })
+
+                addOnLayoutChangeListener(object : View.OnLayoutChangeListener{
+                    override fun onLayoutChange(v: View?, left: Int, top: Int, right: Int, bottom: Int, oldLeft: Int, oldTop: Int, oldRight: Int, oldBottom: Int) {
+                        if ((binding.rvInformationErrorCar.adapter as ErrorAdapter).isUpdating){
+                            val lastVisibleItemComplete: Int = layoutManagerError.findLastCompletelyVisibleItemPosition()
+                            if (lastVisibleItemComplete in 1 until indexLastVisibleItemPosition && indexLastVisibleItemPosition > 0) {
+                                update(dataList, lastVisibleItemComplete)
                             }
 
                             binding.rvInformationErrorCar.removeOnLayoutChangeListener(this);
-                            binding.rvInformationErrorCar.apply {
-                                itemAnimator = null
-                                post{(this.adapter as ErrorAdapter).setData(dataList)}
-                            }
                         }
                     }
                 })
+            }
+        }
+
+        private fun update(dataList:List<String>,lastVisibleItem:Int){
+            val count = "+${dataList.size - lastVisibleItem}"
+            val newDate = dataList.toMutableList().slice(0..lastVisibleItem).toMutableList().apply {
+                this[lastVisibleItem] = count
+            }
+            binding.rvInformationErrorCar.apply {
+                itemAnimator = null
+                post{(this.adapter as ErrorAdapter).setData(newDate)}
             }
         }
 

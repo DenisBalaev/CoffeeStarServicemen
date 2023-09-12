@@ -10,6 +10,9 @@ class ErrorAdapter(
     private var items:List<String>
 ): RecyclerView.Adapter<ErrorAdapter.ItemCardCarViewHolder>() {
 
+    private var isUpdatingSetData = false
+    var isUpdating = false
+
     class ItemCardCarViewHolder(private val binding: ItemCardErrorBinding): RecyclerView.ViewHolder(binding.root){
         fun bindView(item: String){
             binding.tvError.text = item
@@ -24,6 +27,10 @@ class ErrorAdapter(
 
     override fun onBindViewHolder(holder: ItemCardCarViewHolder, position: Int) {
         holder.bindView(items[position])
+
+        if (isUpdatingSetData){
+            isUpdating = true
+        }
     }
 
     override fun getItemCount(): Int = items.size
@@ -33,7 +40,9 @@ class ErrorAdapter(
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         items = newList
         diffResult.dispatchUpdatesTo(this)
+        isUpdatingSetData = true
     }
+
 }
 
 class DiffCallback(
