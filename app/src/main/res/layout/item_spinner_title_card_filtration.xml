@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="text"
         android:textSize="15sp"
-        android:textColor="@color/gray_8B8B8B"
+        android:textColor="@color/selector_text_filtration_cars"
         android:ellipsize="marquee" />
 
     <ImageView

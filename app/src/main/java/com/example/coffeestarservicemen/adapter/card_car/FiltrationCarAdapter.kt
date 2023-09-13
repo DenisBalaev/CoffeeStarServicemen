@@ -1,50 +1,61 @@
 package com.example.coffeestarservicemen.adapter.card_car
 
 import android.annotation.SuppressLint
+import android.graphics.LightingColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
 import com.example.coffeestarservicemen.databinding.ItemCardComboBoxFiltrationBinding
 import com.example.coffeestarservicemen.databinding.ItemCardFiltrationBinding
+import com.example.coffeestarservicemen.model.ItemFilterCar
 
 class FiltrationCarAdapter(
-    private val items:List<String>
+    private var items:MutableList<ItemFilterCar>
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
-        private const val TYPE_COMBO_BOX = 0
+        private const val TYPE_SPINNER = 0
         private const val TYPE_CARD = 1
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0) {
-            TYPE_COMBO_BOX
+        return if (items[position] is ItemFilterCar.ItemComboBox) {
+            TYPE_SPINNER
         } else {
             TYPE_CARD
         }
     }
 
     class ItemFiltrationCardViewHolder(private val binding: ItemCardFiltrationBinding): RecyclerView.ViewHolder(binding.root){
-        fun bindView(item:String) {
-            binding.tvNamFilter.text = item
+        fun bindView(item:ItemFilterCar.ItemText) {
+            binding.tvNamFilter.apply {
+                text = item.name
+                isActivated = item.isActivity
+            }
+            binding.cardFiltration.isActivated = item.isActivity
         }
     }
 
-    class ItemFiltrationComboBoxViewHolder(private val binding: ItemCardComboBoxFiltrationBinding): RecyclerView.ViewHolder(binding.root){
-        private val listSpinner = listOf("Все", "Онлайн", "Офлайн")
-
-        fun bindView()= with(binding){
-            spinnerFiltration.apply {
-                adapter = SpinnerSortingCarAdapter(itemView.context, R.layout.item_spinner_title_card_filtration, listSpinner).apply {
-                    setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                }
-                setSelection(0)
+    class ItemFiltrationSpinnerViewHolder(private val binding: ItemCardComboBoxFiltrationBinding): RecyclerView.ViewHolder(binding.root){
+        fun bindView(item:ItemFilterCar.ItemComboBox, view: FiltrationCarAdapter)= with(binding){
+            val adapterSpinner = SpinnerSortingCarAdapter(itemView.context, R.layout.item_spinner_title_card_filtration, item.listFiltrationComboBox).apply {
+                setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             }
+            spinnerFiltration.apply {
+                adapter = adapterSpinner
+                setSelection(item.selected)
+            }
+
+            cardCbFiltration.isActivated = item.listFiltrationComboBox[item.selected] != "Все"
         }
     }
 
@@ -54,7 +65,7 @@ class FiltrationCarAdapter(
                 ItemCardFiltrationBinding.inflate(LayoutInflater.from(parent.context),parent, false)
             )
         }else {
-            ItemFiltrationComboBoxViewHolder(
+            ItemFiltrationSpinnerViewHolder(
                 ItemCardComboBoxFiltrationBinding.inflate(LayoutInflater.from(parent.context),parent, false)
             )
         }
@@ -63,12 +74,40 @@ class FiltrationCarAdapter(
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is ItemFiltrationCardViewHolder) {
-            holder.bindView(items[position])
-        }else if (holder is ItemFiltrationComboBoxViewHolder){
-            holder.bindView()
+            val item = items[position] as ItemFilterCar.ItemText
+            holder.bindView(item)
+            holder.itemView.setOnClickListener {
+                items[position] = item.apply { isActivity = !item.isActivity }
+                notifyItemChanged(position)
+            }
+        }else if (holder is ItemFiltrationSpinnerViewHolder){
+            holder.bindView(items[position] as ItemFilterCar.ItemComboBox,this)
         }
     }
 
     override fun getItemCount(): Int = items.size
 
+    private fun setData(newList:MutableList<ItemFilterCar>){
+        val diffUtil = DiffCallbackFiltrationCar(items,newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        items = newList
+        diffResult.dispatchUpdatesTo(this)
+    }
+}
+
+class DiffCallbackFiltrationCar(
+    private val oldList:List<ItemFilterCar>,
+    private val newList:List<ItemFilterCar>
+): DiffUtil.Callback() {
+
+    override fun getOldListSize() = oldList.size
+    override fun getNewListSize() = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
 }

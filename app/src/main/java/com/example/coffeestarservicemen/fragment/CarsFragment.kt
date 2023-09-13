@@ -22,12 +22,22 @@ import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationCar
 import com.example.coffeestarservicemen.model.ItemCarModel
 import com.example.coffeestarservicemen.model.ItemFillingModel
+import com.example.coffeestarservicemen.model.ItemFilterCar
 
 
 class CarsFragment : Fragment(R.layout.fragment_cars) {
     private val binding by viewBinding(FragmentCarsBinding::bind)
     private val listSpinner = listOf("Сначала ближайшие", "Сначала дальние")
-    private val listFiltration = listOf("Все","Закрыты","С ошибками","Продукты заканчиваются")
+    private var listFiltration = mutableListOf<ItemFilterCar>(
+        ItemFilterCar.ItemComboBox(
+            listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн"),
+            selected = 1
+        ),
+        ItemFilterCar.ItemText(name = "Закрыты"),
+        ItemFilterCar.ItemText(name = "С ошибками"),
+        ItemFilterCar.ItemText(name = "Продукты заканчиваются")
+    )
+
     private val listCars = mutableListOf<ItemCarModel>(
         ItemCarModel(
             imageSignalStatus = R.drawable.ic_signal_online,

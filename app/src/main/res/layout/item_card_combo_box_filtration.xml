@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:id="@+id/card_cb_filtration"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="100dp"
-    android:backgroundTint="@color/gray_242323"
+    android:backgroundTint="@color/selector_card_filtration_cars"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 

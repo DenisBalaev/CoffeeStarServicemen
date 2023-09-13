@@ -36,7 +36,7 @@ class ErrorAdapter(
     override fun getItemCount(): Int = items.size
 
     fun setData(newList:List<String>){
-        val diffUtil = DiffCallback(items,newList)
+        val diffUtil = DiffCallbackError(items,newList)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         items = newList
         diffResult.dispatchUpdatesTo(this)
@@ -45,7 +45,7 @@ class ErrorAdapter(
 
 }
 
-class DiffCallback(
+class DiffCallbackError(
     private val oldList:List<String>,
     private val newList:List<String>
 ): DiffUtil.Callback() {
