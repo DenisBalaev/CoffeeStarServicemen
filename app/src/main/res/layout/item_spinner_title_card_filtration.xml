@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_cb_filtration"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical">
+    app:cardCornerRadius="100dp"
+    android:backgroundTint="@color/selector_card_filtration_cars">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:singleLine="true"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="text"
-        android:textSize="15sp"
-        android:textColor="@color/selector_text_filtration_cars"
-        android:ellipsize="marquee" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="16dp">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/ic_tick_bottom"
-        android:scaleType="fitXY"
-        android:layout_marginStart="6dp"
-        />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text"
+            android:textSize="15sp"
+            android:textColor="@color/selector_text_filtration_cars"
+            android:ellipsize="marquee" />
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_tick_bottom"
+            android:scaleType="fitXY"
+            android:layout_marginStart="6dp"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -31,7 +31,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
     private var listFiltration = mutableListOf<ItemFilterCar>(
         ItemFilterCar.ItemComboBox(
             listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн"),
-            selected = 1
+            selected = 0
         ),
         ItemFilterCar.ItemText(name = "Закрыты"),
         ItemFilterCar.ItemText(name = "С ошибками"),
