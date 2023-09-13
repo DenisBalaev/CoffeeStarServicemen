@@ -41,12 +41,10 @@ class FiltrationCarAdapter(
     class ItemFiltrationSpinnerViewHolder(private val binding: ItemCardComboBoxFiltrationBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bindView(item:ItemFilterCar.ItemComboBox)= with(binding){
-            val adapterSpinner = SpinnerFilterCarAdapter(itemView.context, R.layout.item_spinner_title_card_filtration, item.listFiltrationComboBox).apply {
-                setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            }
             spinnerFiltration.apply {
-                adapter = adapterSpinner
-                setSelection(item.selected)
+                adapter = SpinnerFilterCarAdapter(itemView.context, R.layout.item_spinner_title_card_filtration, item.listFiltrationComboBox).apply {
+                    setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
             }
         }
     }

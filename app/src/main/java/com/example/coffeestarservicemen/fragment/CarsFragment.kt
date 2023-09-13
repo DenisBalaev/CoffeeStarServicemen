@@ -29,10 +29,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
     private val binding by viewBinding(FragmentCarsBinding::bind)
     private val listSpinner = listOf("Сначала ближайшие", "Сначала дальние")
     private var listFiltration = mutableListOf<ItemFilterCar>(
-        ItemFilterCar.ItemComboBox(
-            listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн"),
-            selected = 0
-        ),
+        ItemFilterCar.ItemComboBox(listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн")),
         ItemFilterCar.ItemText(name = "Закрыты"),
         ItemFilterCar.ItemText(name = "С ошибками"),
         ItemFilterCar.ItemText(name = "Продукты заканчиваются")
