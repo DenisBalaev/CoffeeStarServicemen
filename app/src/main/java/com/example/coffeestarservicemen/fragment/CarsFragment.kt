@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,17 +21,17 @@ import com.example.coffeestarservicemen.databinding.FragmentCarsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationCar
 import com.example.coffeestarservicemen.model.ItemCarModel
 import com.example.coffeestarservicemen.model.ItemFillingModel
-import com.example.coffeestarservicemen.model.ItemFilterCar
+import com.example.coffeestarservicemen.model.ItemFilter
 
 
 class CarsFragment : Fragment(R.layout.fragment_cars) {
     private val binding by viewBinding(FragmentCarsBinding::bind)
     private val listSpinner = listOf("Сначала ближайшие", "Сначала дальние")
-    private var listFiltration = mutableListOf<ItemFilterCar>(
-        ItemFilterCar.ItemComboBox(listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн")),
-        ItemFilterCar.ItemText(name = "Закрыты"),
-        ItemFilterCar.ItemText(name = "С ошибками"),
-        ItemFilterCar.ItemText(name = "Продукты заканчиваются")
+    private var listFiltration = mutableListOf<ItemFilter>(
+        ItemFilter.ItemComboBox(listFiltrationComboBox = listOf("Все", "Онлайн", "Офлайн")),
+        ItemFilter.ItemText(name = "Закрыты"),
+        ItemFilter.ItemText(name = "С ошибками"),
+        ItemFilter.ItemText(name = "Продукты заканчиваются")
     )
 
     private val listCars = mutableListOf<ItemCarModel>(

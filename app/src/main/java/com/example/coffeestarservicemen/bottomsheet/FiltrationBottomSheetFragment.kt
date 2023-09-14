@@ -1,14 +1,10 @@
 package com.example.coffeestarservicemen.bottomsheet
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -18,6 +14,7 @@ import com.example.coffeestarservicemen.adapter.car_screen.command.CommandAdapte
 import com.example.coffeestarservicemen.databinding.BottomDialogCommandCarScreenBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationBottomSheet
 import com.example.coffeestarservicemen.model.ItemCommand
+import com.example.coffeestarservicemen.model.ItemFilter
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -29,7 +26,17 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    private val list = mutableListOf<String>("All","Cup&Lid","Products","Door","Sell","Ice","Other","Cleaning&Tuning")
+    //private val list = mutableListOf<ItemFilterCar.ItemText>("All","Cup&Lid","Products","Door","Sell","Ice","Other","Cleaning&Tuning")
+    private val list = mutableListOf<ItemFilter.ItemText>(
+        ItemFilter.ItemText(name = "All"),
+        ItemFilter.ItemText(name = "Cup&Lid" , isActivity = true),
+        ItemFilter.ItemText(name = "Products"),
+        ItemFilter.ItemText(name = "Door"),
+        ItemFilter.ItemText(name = "Sell"),
+        ItemFilter.ItemText(name = "Ice"),
+        ItemFilter.ItemText(name = "Other"),
+        ItemFilter.ItemText(name = "Cleaning&Tuning")
+    )
     private val listCommand = mutableListOf<ItemCommand>(
         ItemCommand(
             title = "Cup&Lid",
