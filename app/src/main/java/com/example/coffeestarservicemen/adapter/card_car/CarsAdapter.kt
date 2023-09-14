@@ -107,7 +107,7 @@ class CarsAdapter(
             }
 
             cardLocation.card.setOnClickListener {
-                Toast.makeText(itemView.context,"Map",Toast.LENGTH_LONG).show()
+                Toast.makeText(itemView.context,"Открытие карты",Toast.LENGTH_LONG).show()
             }
         }
     }
