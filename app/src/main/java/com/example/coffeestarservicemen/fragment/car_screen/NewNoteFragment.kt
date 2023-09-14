@@ -16,14 +16,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.coffeestarservicemen.MainActivity
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.SoftInputAssist
 import com.example.coffeestarservicemen.databinding.FragmentNewNoteBinding
 
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     private val binding by viewBinding(FragmentNewNoteBinding::bind)
+    private lateinit var softInputAssist:SoftInputAssist
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        softInputAssist = SoftInputAssist(requireActivity())
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity?.window?.let { WindowCompat.setDecorFitsSystemWindows(it, false) }
@@ -45,5 +50,20 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
                 Toast.makeText(requireContext(),"Сохранение",Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        softInputAssist.onResume()
+    }
+
+    override fun onPause() {
+        softInputAssist.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        softInputAssist.onDestroy()
+        super.onDestroy()
     }
 }

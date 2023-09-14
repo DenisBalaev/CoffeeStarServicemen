@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
+import com.example.coffeestarservicemen.SoftInputAssistFragment
 import com.example.coffeestarservicemen.adapter.car_screen.FiltrationBottomSheetAdapter
 import com.example.coffeestarservicemen.adapter.car_screen.command.CommandAdapter
 import com.example.coffeestarservicemen.databinding.BottomDialogCommandCarScreenBinding
@@ -145,5 +148,26 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             behavior = BottomSheetBehavior.from(bottomSheet)
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
         }
+
+        //dialog?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
+    private val softInputAssist by lazy {
+        SoftInputAssistFragment(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        softInputAssist.onResume()
+    }
+
+    override fun onPause() {
+        softInputAssist.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        softInputAssist.onDestroy()
+        super.onDestroy()
     }
 }
