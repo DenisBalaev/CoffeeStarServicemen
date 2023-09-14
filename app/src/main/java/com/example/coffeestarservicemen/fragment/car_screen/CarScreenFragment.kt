@@ -2,6 +2,7 @@ package com.example.coffeestarservicemen.fragment.car_screen
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -45,6 +46,10 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
 
             ivSend.setOnClickListener {
                 bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+            }
+
+            cardLocation.card.setOnClickListener {
+                Toast.makeText(requireContext(),"Открытие карты", Toast.LENGTH_LONG).show()
             }
         }
 

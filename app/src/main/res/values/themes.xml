@@ -10,7 +10,10 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black_101010</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <!-- Customize your theme here. -->
 
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
@@ -33,15 +36,4 @@
         <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
-
-    //Пробник
-    <style name="CustomizedBottomDialogStyle">
-        <item name="bottomSheetStyle">@style/AppModalStyle</item>
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowSoftInputMode">adjustResize</item>
-    </style>
-
 </resources>
