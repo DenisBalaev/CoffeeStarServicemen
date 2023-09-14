@@ -61,7 +61,6 @@ class FiltrationCarAdapter(
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is ItemFiltrationCardViewHolder) {
             val item = items[position] as ItemFilterCar.ItemText
@@ -76,28 +75,4 @@ class FiltrationCarAdapter(
     }
 
     override fun getItemCount(): Int = items.size
-
-    private fun setData(newList:MutableList<ItemFilterCar>){
-        val diffUtil = DiffCallbackFiltrationCar(items,newList)
-        val diffResult = DiffUtil.calculateDiff(diffUtil)
-        items = newList
-        diffResult.dispatchUpdatesTo(this)
-    }
-}
-
-class DiffCallbackFiltrationCar(
-    private val oldList:List<ItemFilterCar>,
-    private val newList:List<ItemFilterCar>
-): DiffUtil.Callback() {
-
-    override fun getOldListSize() = oldList.size
-    override fun getNewListSize() = newList.size
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
-    }
 }

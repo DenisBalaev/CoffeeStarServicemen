@@ -18,7 +18,7 @@ class FiltrationBottomSheetAdapter(
         var bindingLayout = binding
 
         fun bindView(item:String){
-            binding.textFiltration.text= item
+            binding.textFiltration.text = item
         }
     }
 

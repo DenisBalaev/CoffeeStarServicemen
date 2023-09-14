@@ -21,9 +21,8 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
         listError = ListError(
             title = "Ошибки",
             listOf(
-                "Slideway №4 error","Drop lid error","Drop and Drop", "Drop lid error",
-                "Slideway №4 error","Drop lid error","Drop and Drop", "Drop lid error",
-                "Slideway №4 error","Drop lid error","Drop and Drop", "Drop lid error"
+                "Slideway №4 error","Drop lid error","Drop and Drop", "Slideway №5 error",
+                "Slideway №6 error","Slideway №7 error","Slideway №8 error"
             )
         ),
         listGeneral = listOf(
