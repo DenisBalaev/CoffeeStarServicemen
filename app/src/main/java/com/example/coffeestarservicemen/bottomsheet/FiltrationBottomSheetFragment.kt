@@ -1,11 +1,17 @@
 package com.example.coffeestarservicemen.bottomsheet
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.WindowInsets
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +20,8 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.SoftInputAssistFragment
 import com.example.coffeestarservicemen.adapter.car_screen.FiltrationBottomSheetAdapter
 import com.example.coffeestarservicemen.adapter.car_screen.command.CommandAdapter
+import com.example.coffeestarservicemen.databinding.ActivityMainBinding
+import com.example.coffeestarservicemen.databinding.BottomDialogActionsCommandsBinding
 import com.example.coffeestarservicemen.databinding.BottomDialogCommandCarScreenBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationBottomSheet
 import com.example.coffeestarservicemen.model.ItemCommand
@@ -149,25 +157,13 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
         }
 
-        //dialog?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
-
-    private val softInputAssist by lazy {
-        SoftInputAssistFragment(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        softInputAssist.onResume()
-    }
-
-    override fun onPause() {
-        softInputAssist.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        softInputAssist.onDestroy()
-        super.onDestroy()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dialog?.window?.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            dialog?.window?.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
     }
 }
