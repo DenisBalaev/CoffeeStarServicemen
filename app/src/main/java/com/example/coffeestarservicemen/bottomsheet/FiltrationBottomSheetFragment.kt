@@ -26,7 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
     private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
     private var COLLAPSED_HEIGHT = 200
-    //private val list = mutableListOf<ItemFilterCar.ItemText>("All","Cup&Lid","Products","Door","Sell","Ice","Other","Cleaning&Tuning")
+    //private val list = mutableListOf<String>("All","Cup&Lid","Products","Door","Sell","Ice","Other","Cleaning&Tuning")
     private val list = mutableListOf<ItemFilter.ItemText>(
         ItemFilter.ItemText(name = "All"),
         ItemFilter.ItemText(name = "Cup&Lid" , isActivity = true),
@@ -119,6 +119,7 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                         spaceRight = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_BottomSheet)
                     )
                 )
+                itemAnimator = null
             }
 
             val bottomSheetGeneral = ActionCommandGeneralBottomSheetFragment(requireContext(),layoutInflater)

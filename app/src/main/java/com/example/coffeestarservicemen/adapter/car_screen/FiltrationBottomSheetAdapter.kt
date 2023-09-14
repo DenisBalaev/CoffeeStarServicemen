@@ -29,44 +29,21 @@ class FiltrationBottomSheetAdapter(
         )
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindView(items[position])
         holder.itemView.setOnClickListener {
-            items[selectedPosition].isActivity = false
-            items[position].isActivity = true
-            notifyItemChanged(selectedPosition)
-            notifyItemChanged(position)
+            if (selectedPosition != position) {
+                items[selectedPosition].isActivity = false
+                items[position].isActivity = true
+                notifyItemChanged(selectedPosition)
+                notifyItemChanged(position)
+                listener(items[position].name)
+            }
             selectedPosition = position
-            listener(items[position].name)
         }
     }
 
     override fun getItemCount(): Int {
         return items.size
-    }
-
-    fun setData(newList:List<ItemFilter.ItemText>){
-        val diffUtil = DiffCallbackFiltrationCommand(items,newList)
-        val diffResult = DiffUtil.calculateDiff(diffUtil)
-        items = newList
-        diffResult.dispatchUpdatesTo(this)
-    }
-}
-
-class DiffCallbackFiltrationCommand(
-    private val oldList:List<ItemFilter.ItemText>,
-    private val newList:List<ItemFilter.ItemText>
-): DiffUtil.Callback() {
-
-    override fun getOldListSize() = oldList.size
-    override fun getNewListSize() = newList.size
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }
