@@ -52,7 +52,7 @@ class SoftInputAssist(activity: Activity) {
     private fun possiblyResizeChildOfContent() {
         runOnMainThread {
             contentContainer?.getWindowVisibleDisplayFrame(contentAreaOfWindowBounds)
-            val usableHeightNow: Int = contentAreaOfWindowBounds.bottom
+            val usableHeightNow: Int = contentAreaOfWindowBounds.height()
 
             if (usableHeightNow != usableHeightPrevious) {
                 rootViewLayout?.height = usableHeightNow

@@ -24,18 +24,23 @@ import com.example.coffeestarservicemen.databinding.FragmentNewNoteBinding
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     private val binding by viewBinding(FragmentNewNoteBinding::bind)
-    private lateinit var softInputAssist:SoftInputAssist
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        softInputAssist = SoftInputAssist(requireActivity())
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            activity?.window?.let { WindowCompat.setDecorFitsSystemWindows(it, false) }
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            //activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+            ViewCompat.setOnApplyWindowInsetsListener(requireActivity().window?.decorView!!) { _, insets ->
+                val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                val navigationBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                (requireActivity() as MainActivity).binding.root.setPadding(0, 0, 0, imeHeight - navigationBarHeight)
+                insets
+            }
         } else {
             @Suppress("DEPRECATION")
-            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        }
+            activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        }*/
+
+        //activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         with(binding){
             etNote.requestFocus()
@@ -50,20 +55,5 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
                 Toast.makeText(requireContext(),"Сохранение",Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        softInputAssist.onResume()
-    }
-
-    override fun onPause() {
-        softInputAssist.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        softInputAssist.onDestroy()
-        super.onDestroy()
     }
 }

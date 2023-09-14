@@ -31,6 +31,9 @@ class FiltrationBottomSheetAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindView(items[position])
+        if (items[position].isActivity){
+            selectedPosition = position
+        }
         holder.itemView.setOnClickListener {
             if (selectedPosition != position) {
                 items[selectedPosition].isActivity = false
@@ -39,7 +42,6 @@ class FiltrationBottomSheetAdapter(
                 notifyItemChanged(position)
                 listener(items[position].name)
             }
-            selectedPosition = position
         }
     }
 

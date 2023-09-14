@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
+import com.example.coffeestarservicemen.MainActivity
 import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.SpinnerSortingCarAdapter
@@ -83,7 +84,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val spaceRvFiltration = resources.getDimensionPixelSize(R.dimen.marginEnd_recyclerView_Filtration_Car)
 
-        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
         with(binding){
             spinnerSorting.apply {

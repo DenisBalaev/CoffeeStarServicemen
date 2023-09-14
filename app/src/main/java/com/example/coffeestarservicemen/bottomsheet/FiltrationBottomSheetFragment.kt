@@ -1,27 +1,20 @@
 package com.example.coffeestarservicemen.bottomsheet
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.WindowInsets
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
-import com.example.coffeestarservicemen.SoftInputAssistFragment
 import com.example.coffeestarservicemen.adapter.car_screen.FiltrationBottomSheetAdapter
 import com.example.coffeestarservicemen.adapter.car_screen.command.CommandAdapter
-import com.example.coffeestarservicemen.databinding.ActivityMainBinding
-import com.example.coffeestarservicemen.databinding.BottomDialogActionsCommandsBinding
 import com.example.coffeestarservicemen.databinding.BottomDialogCommandCarScreenBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationBottomSheet
 import com.example.coffeestarservicemen.model.ItemCommand
@@ -97,6 +90,8 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val linearLayoutManagerCommand = LinearLayoutManager(requireContext())
 
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
         with(binding){
             search.etSearch.apply {
                 hint = "Команда машине"
@@ -155,15 +150,6 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
             val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
             behavior = BottomSheetBehavior.from(bottomSheet)
             behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            dialog?.window?.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            dialog?.window?.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
         }
     }
 }
