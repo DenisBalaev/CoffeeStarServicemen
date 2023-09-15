@@ -90,14 +90,6 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val linearLayoutManagerCommand = LinearLayoutManager(requireContext())
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireDialog().window?.let { WindowCompat.setDecorFitsSystemWindows(it, false) }
-        } else {
-            @Suppress("DEPRECATION")
-            requireDialog().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-        }
-
         with(binding){
             search.etSearch.apply {
                 hint = "Команда машине"

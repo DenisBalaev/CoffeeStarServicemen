@@ -23,7 +23,6 @@
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
@@ -36,6 +35,5 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
         <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
