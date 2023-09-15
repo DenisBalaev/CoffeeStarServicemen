@@ -28,13 +28,14 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            //activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
             ViewCompat.setOnApplyWindowInsetsListener(requireActivity().window?.decorView!!) { _, insets ->
                 val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
                 val navigationBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-                (requireActivity() as MainActivity).binding.root.setPadding(0, 0, 0, imeHeight - navigationBarHeight)
+                (requireActivity() as MainActivity).binding.root.setPadding(0, 0, 0, imeHeight)
+                //requireActivity().window.decorView.setPadding(0, 0, 0, imeHeight - navigationBarHeight)
                 insets
             }
+            requireActivity().window?.let { WindowCompat.setDecorFitsSystemWindows(it, false) }
         } else {
             @Suppress("DEPRECATION")
             activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)

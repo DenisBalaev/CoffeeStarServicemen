@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -90,7 +91,12 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val linearLayoutManagerCommand = LinearLayoutManager(requireContext())
 
-        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            requireDialog().window?.let { WindowCompat.setDecorFitsSystemWindows(it, false) }
+        } else {
+            @Suppress("DEPRECATION")
+            requireDialog().window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        }
 
         with(binding){
             search.etSearch.apply {
