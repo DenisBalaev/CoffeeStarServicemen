@@ -36,7 +36,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             }.attach()
 
             repeat(adapter.titleList.size){
-                tabLayout.getTabAt(it)!!.customView = ItemTitleTabLayoutBinding.inflate(layoutInflater).text1
+                tabLayout.getTabAt(it)!!.customView = ItemTitleTabLayoutBinding.inflate(layoutInflater).content
             }
             viewPage.setCurrentItem(requireArguments().getInt("SelectorPage"), false)
 
