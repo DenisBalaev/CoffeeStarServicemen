@@ -3,6 +3,7 @@ package com.example.coffeestarservicemen.fragment.car_screen
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -30,7 +31,7 @@ class CarScreenNotesFragment : Fragment(R.layout.fragment_car_screen_notes) {
             }
 
             cardNewNote.setOnClickListener {
-                findNavController().navigate(R.id.newNoteFragment)
+                findNavController().navigate(R.id.newNoteFragment, bundleOf("SelectorPage" to 2))
             }
         }
     }

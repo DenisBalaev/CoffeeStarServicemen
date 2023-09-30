@@ -30,11 +30,6 @@
         tools:layout="@layout/fragment_car_screen" >
 
         <argument
-            android:name="SelectorPage"
-            app:argType="integer"
-            android:defaultValue="0" />
-
-        <argument
             android:name="itemCarModel"
             app:argType="com.example.coffeestarservicemen.model.ItemCarModel"
             />
@@ -44,9 +39,5 @@
         android:id="@+id/newNoteFragment"
         android:name="com.example.coffeestarservicemen.fragment.car_screen.NewNoteFragment"
         android:label="fragment_new_note"
-        tools:layout="@layout/fragment_new_note" >
-        <action
-            android:id="@+id/action_newNoteFragment_to_carScreenFragment"
-            app:destination="@id/carScreenFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_new_note" />
 </navigation>

@@ -32,13 +32,15 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         @Suppress("DEPRECATION")
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
+        val pageNote = requireArguments().getInt("SelectorPage")
+
         with(binding){
             etNote.requestFocus()
             val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(etNote, InputMethodManager.SHOW_IMPLICIT)
 
             ivArrowBack.setOnClickListener {
-                findNavController().navigate(R.id.carScreenFragment, bundleOf("SelectorPage" to 2))
+                findNavController().navigate(R.id.carScreenFragment, bundleOf("SelectorPage" to pageNote))
             }
 
             btnSave.setOnClickListener {

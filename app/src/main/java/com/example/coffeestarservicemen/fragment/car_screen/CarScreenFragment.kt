@@ -61,6 +61,4 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             idLayout = R.layout.fragment_car_screen
         )
     }
-
-
 }
