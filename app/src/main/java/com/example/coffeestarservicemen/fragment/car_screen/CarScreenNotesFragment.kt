@@ -32,13 +32,13 @@ class CarScreenNotesFragment : Fragment(R.layout.fragment_car_screen_notes) {
             }
 
             cardNewNote.setOnClickListener {
-                val page = this@CarScreenNotesFragment.arguments?.getInt(TabPageAdapter.ARG_SELECT_TAP_PAGE)
-                findNavController().navigate(R.id.newNoteFragment, bundleOf(ARG_SELECTOR_PAGE to page))
+                val page = this@CarScreenNotesFragment.arguments?.getInt(TabPageAdapter.ARG_SELECT_TAB_PAGE)
+                findNavController().navigate(R.id.newNoteFragment, bundleOf(ARG_SELECT_PAGE to page))
             }
         }
     }
 
     companion object {
-        const val ARG_SELECTOR_PAGE = "SelectorPage"
+        const val ARG_SELECT_PAGE = "SelectorPage"
     }
 }

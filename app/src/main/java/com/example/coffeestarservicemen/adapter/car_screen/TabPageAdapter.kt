@@ -19,7 +19,7 @@ class TabPageAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : Fr
         return if (titleList[position] == "Заметки"){
             fragmentList[position].apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_SELECT_TAP_PAGE, position)
+                    putInt(ARG_SELECT_TAB_PAGE, position)
                 }
             }
         }else{
@@ -33,6 +33,6 @@ class TabPageAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : Fr
     }
 
     companion object {
-        const val ARG_SELECT_TAP_PAGE = "object"
+        const val ARG_SELECT_TAB_PAGE = "object"
     }
 }

@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
 import com.example.coffeestarservicemen.MyFragment
@@ -13,9 +12,8 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
 import com.example.coffeestarservicemen.databinding.ItemTitleTabLayoutBinding
-import com.example.coffeestarservicemen.fragment.car_screen.CarScreenNotesFragment.Companion.ARG_SELECTOR_PAGE
+import com.example.coffeestarservicemen.fragment.car_screen.CarScreenNotesFragment.Companion.ARG_SELECT_PAGE
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_car_screen.*
 
 class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
     private val binding by viewBinding(FragmentCarScreenBinding::bind)
@@ -38,7 +36,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             repeat(adapter.titleList.size){
                 tabLayout.getTabAt(it)!!.customView = ItemTitleTabLayoutBinding.inflate(layoutInflater).content
             }
-            viewPage.setCurrentItem(requireArguments().getInt(ARG_SELECTOR_PAGE), false)
+            viewPage.setCurrentItem(requireArguments().getInt(ARG_SELECT_PAGE), false)
 
             ivArrowBack.setOnClickListener {
                 findNavController().navigate(R.id.carsFragment)

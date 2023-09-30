@@ -22,7 +22,7 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.SoftInputAssist
 import com.example.coffeestarservicemen.databinding.FragmentNewNoteBinding
 import com.example.coffeestarservicemen.fragment.CarsFragmentDirections
-import com.example.coffeestarservicemen.fragment.car_screen.CarScreenNotesFragment.Companion.ARG_SELECTOR_PAGE
+import com.example.coffeestarservicemen.fragment.car_screen.CarScreenNotesFragment.Companion.ARG_SELECT_PAGE
 
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
@@ -33,7 +33,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         @Suppress("DEPRECATION")
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
-        val pageNote = requireArguments().getInt(ARG_SELECTOR_PAGE)
+        val pageNote = requireArguments().getInt(ARG_SELECT_PAGE)
 
         with(binding){
             etNote.requestFocus()
@@ -41,7 +41,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
             imm.showSoftInput(etNote, InputMethodManager.SHOW_IMPLICIT)
 
             ivArrowBack.setOnClickListener {
-                findNavController().navigate(R.id.carScreenFragment, bundleOf(ARG_SELECTOR_PAGE to pageNote))
+                findNavController().navigate(R.id.carScreenFragment, bundleOf(ARG_SELECT_PAGE to pageNote))
             }
 
             btnSave.setOnClickListener {
