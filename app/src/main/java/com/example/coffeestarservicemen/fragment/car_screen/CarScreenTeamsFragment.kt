@@ -1,22 +1,17 @@
-package com.example.coffeestarservicemen.bottomsheet
+package com.example.coffeestarservicemen.fragment.car_screen
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewTreeObserver
-import android.view.WindowManager
-import android.widget.FrameLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.DialogFragment
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.FiltrationBottomSheetAdapter
 import com.example.coffeestarservicemen.adapter.car_screen.command.CommandAdapter
-import com.example.coffeestarservicemen.databinding.BottomDialogCommandCarScreenBinding
+import com.example.coffeestarservicemen.bottomsheet.ActionCommandGeneralBottomSheetFragment
+import com.example.coffeestarservicemen.databinding.FragmentCarScreenTeamsBinding
 import com.example.coffeestarservicemen.decoration.CustomItemDecorationFiltrationBottomSheet
 import com.example.coffeestarservicemen.model.ItemCommand
 import com.example.coffeestarservicemen.model.ItemFilter
@@ -24,13 +19,10 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_dialog_command_car_screen) {
-    private val binding by viewBinding(BottomDialogCommandCarScreenBinding::bind)
-    private var COLLAPSED_HEIGHT = 200
+class CarScreenTeamsFragment : Fragment(R.layout.fragment_car_screen_teams) {
+    private val binding by viewBinding(FragmentCarScreenTeamsBinding::bind)
     private val list = mutableListOf<ItemFilter.ItemText>(
         ItemFilter.ItemText(name = "All"),
         ItemFilter.ItemText(name = "Cup&Lid" , isActivity = true),
@@ -82,25 +74,10 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
         )
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL,R.style.DialogStyle)
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val linearLayoutManagerCommand = LinearLayoutManager(requireContext())
         with(binding){
-            search.etSearch.apply {
-                hint = "Команда машине"
-                setOnFocusChangeListener { _, _ ->
-                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
-                }
-                setOnClickListener {
-                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
-                }
-            }
-
+            search.etSearch.hint = "Команда машине"
             rvFiltration.apply {
                 layoutManager = FlexboxLayoutManager(requireContext()).apply {
                     flexWrap = FlexWrap.WRAP
@@ -108,7 +85,6 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     justifyContent = JustifyContent.FLEX_START
                 }
                 adapter = FiltrationBottomSheetAdapter(items = list){itemFilter->
-                    behavior.state = BottomSheetBehavior.STATE_EXPANDED
                     if (itemFilter != "All") {
                         val position = listCommand.indices.find { listCommand[it].title == itemFilter }
                         position?.let { linearLayoutManagerCommand.scrollToPositionWithOffset(it,0) }
@@ -132,22 +108,6 @@ class FiltrationBottomSheetFragment: BottomSheetDialogFragment(R.layout.bottom_d
                     bottomSheetGeneral.show(it)
                 }
             }
-
-            rvFiltration.viewTreeObserver.addOnGlobalLayoutListener(observer)
-        }
-    }
-
-    private val observer = ViewTreeObserver.OnGlobalLayoutListener { countingStartingHeightDialog() }
-    private lateinit var behavior:BottomSheetBehavior<FrameLayout>
-
-    private fun countingStartingHeightDialog(){
-        COLLAPSED_HEIGHT = 32 + 10
-        val density = requireContext().resources.displayMetrics.density
-
-        dialog?.let {
-            val bottomSheet = it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
-            behavior = BottomSheetBehavior.from(bottomSheet)
-            behavior.peekHeight = ((COLLAPSED_HEIGHT * density)+ binding.search.etSearch.height + binding.rvFiltration.height).toInt()
         }
     }
 }

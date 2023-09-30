@@ -5,12 +5,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.BottomNavInterface
 import com.example.coffeestarservicemen.MyFragment
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.TabPageAdapter
-import com.example.coffeestarservicemen.bottomsheet.FiltrationBottomSheetFragment
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
 import com.example.coffeestarservicemen.databinding.ItemTitleTabLayoutBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -23,11 +23,10 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
 
         val adapter = TabPageAdapter(fragmentManager = childFragmentManager, lifecycle = lifecycle).apply {
             addFragment(CarScreenStatusesFragment(), "Статусы")
+            addFragment(CarScreenTeamsFragment(), "Команды")
             addFragment(CarScreenNotesFragment(), "Заметки")
             addFragment(CarScreenHistoryFragment(), "История")
         }
-
-        val bottomSheetDialog = FiltrationBottomSheetFragment()
 
         with(binding){
             viewPage.adapter = adapter
@@ -45,7 +44,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             }
 
             ivSend.setOnClickListener {
-                bottomSheetDialog.show(childFragmentManager, bottomSheetDialog.tag)
+                Toast.makeText(requireContext(),"Поделиться",Toast.LENGTH_SHORT).show()
             }
 
             cardLocation.card.setOnClickListener {

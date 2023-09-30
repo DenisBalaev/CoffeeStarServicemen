@@ -15,11 +15,13 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.MainActivity
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.SoftInputAssist
 import com.example.coffeestarservicemen.databinding.FragmentNewNoteBinding
+import com.example.coffeestarservicemen.fragment.CarsFragmentDirections
 
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
@@ -36,7 +38,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
             imm.showSoftInput(etNote, InputMethodManager.SHOW_IMPLICIT)
 
             ivArrowBack.setOnClickListener {
-                findNavController().navigate(R.id.carScreenFragment, bundleOf("SelectorPage" to 1))
+                findNavController().navigate(R.id.carScreenFragment, bundleOf("SelectorPage" to 2))
             }
 
             btnSave.setOnClickListener {

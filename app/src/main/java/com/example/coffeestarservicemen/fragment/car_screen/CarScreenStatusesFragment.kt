@@ -2,15 +2,12 @@ package com.example.coffeestarservicemen.fragment.car_screen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.status.StatusAdapter
 import com.example.coffeestarservicemen.bottomsheet.ActionCommandRefillBottomSheetFragment
-import com.example.coffeestarservicemen.bottomsheet.FiltrationBottomSheetFragment
-import com.example.coffeestarservicemen.bottomsheet.HistoryCodeBottomSheetFragment
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenStatusesBinding
 import com.example.coffeestarservicemen.model.*
 
