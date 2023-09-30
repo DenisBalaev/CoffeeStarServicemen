@@ -23,7 +23,7 @@ import com.google.android.flexbox.JustifyContent
 
 class CarScreenTeamsFragment : Fragment(R.layout.fragment_car_screen_teams) {
     private val binding by viewBinding(FragmentCarScreenTeamsBinding::bind)
-    private val list = mutableListOf<ItemFilter.ItemText>(
+    private val listFiltration = mutableListOf<ItemFilter.ItemText>(
         ItemFilter.ItemText(name = "All"),
         ItemFilter.ItemText(name = "Cup&Lid" , isActivity = true),
         ItemFilter.ItemText(name = "Products"),
@@ -84,7 +84,7 @@ class CarScreenTeamsFragment : Fragment(R.layout.fragment_car_screen_teams) {
                     flexDirection = FlexDirection.ROW
                     justifyContent = JustifyContent.FLEX_START
                 }
-                adapter = FiltrationBottomSheetAdapter(items = list){itemFilter->
+                adapter = FiltrationBottomSheetAdapter(items = listFiltration){itemFilter->
                     if (itemFilter != "All") {
                         val position = listCommand.indices.find { listCommand[it].title == itemFilter }
                         position?.let { linearLayoutManagerCommand.scrollToPositionWithOffset(it,0) }

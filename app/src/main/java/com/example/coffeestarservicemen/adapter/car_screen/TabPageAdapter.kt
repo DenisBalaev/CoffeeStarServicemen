@@ -1,5 +1,6 @@
 package com.example.coffeestarservicemen.adapter.car_screen
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -15,11 +16,23 @@ class TabPageAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : Fr
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragmentList[position]
+        return if (titleList[position] == "Заметки"){
+            fragmentList[position].apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_SELECT_TAP_PAGE, position)
+                }
+            }
+        }else{
+            fragmentList[position]
+        }
     }
 
     fun addFragment(fragment: Fragment, title:String){
         fragmentList.add(fragment)
         titleList.add(title)
+    }
+
+    companion object {
+        const val ARG_SELECT_TAP_PAGE = "object"
     }
 }

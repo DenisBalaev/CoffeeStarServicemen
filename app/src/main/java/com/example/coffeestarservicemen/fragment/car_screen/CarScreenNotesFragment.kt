@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.NotesAdapter
+import com.example.coffeestarservicemen.adapter.car_screen.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenNotesBinding
 
 
@@ -31,8 +32,13 @@ class CarScreenNotesFragment : Fragment(R.layout.fragment_car_screen_notes) {
             }
 
             cardNewNote.setOnClickListener {
-                findNavController().navigate(R.id.newNoteFragment, bundleOf("SelectorPage" to 2))
+                val page = this@CarScreenNotesFragment.arguments?.getInt(TabPageAdapter.ARG_SELECT_TAP_PAGE)
+                findNavController().navigate(R.id.newNoteFragment, bundleOf(ARG_SELECTOR_PAGE to page))
             }
         }
+    }
+
+    companion object {
+        const val ARG_SELECTOR_PAGE = "SelectorPage"
     }
 }

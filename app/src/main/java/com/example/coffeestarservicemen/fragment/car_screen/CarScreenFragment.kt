@@ -13,6 +13,7 @@ import com.example.coffeestarservicemen.R
 import com.example.coffeestarservicemen.adapter.car_screen.TabPageAdapter
 import com.example.coffeestarservicemen.databinding.FragmentCarScreenBinding
 import com.example.coffeestarservicemen.databinding.ItemTitleTabLayoutBinding
+import com.example.coffeestarservicemen.fragment.car_screen.CarScreenNotesFragment.Companion.ARG_SELECTOR_PAGE
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_car_screen.*
 
@@ -37,7 +38,7 @@ class CarScreenFragment : Fragment(R.layout.fragment_car_screen) {
             repeat(adapter.titleList.size){
                 tabLayout.getTabAt(it)!!.customView = ItemTitleTabLayoutBinding.inflate(layoutInflater).content
             }
-            viewPage.setCurrentItem(requireArguments().getInt("SelectorPage"), false)
+            viewPage.setCurrentItem(requireArguments().getInt(ARG_SELECTOR_PAGE), false)
 
             ivArrowBack.setOnClickListener {
                 findNavController().navigate(R.id.carsFragment)
