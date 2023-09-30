@@ -40,8 +40,8 @@ class FiltrationBottomSheetAdapter(
                 items[position].isActivity = true
                 notifyItemChanged(selectedPosition)
                 notifyItemChanged(position)
-                listener(items[position].name)
             }
+            listener(items[position].name)
         }
     }
 

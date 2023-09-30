@@ -12,6 +12,7 @@
         tools:text="Ошибки"
         android:textColor="@color/gray_5C5C5C"
         android:textSize="13sp"
+        android:textAllCaps="true"
         android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"/>
 
