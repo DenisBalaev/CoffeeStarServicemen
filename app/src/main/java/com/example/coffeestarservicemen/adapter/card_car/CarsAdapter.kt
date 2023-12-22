@@ -1,8 +1,6 @@
 package com.example.coffeestarservicemen.adapter.card_car
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -119,6 +117,7 @@ class CarsAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemCardCarViewHolder, position: Int) {
+        holder.setIsRecyclable(false)
         holder.bindView(items[position],position,listener)
     }
 

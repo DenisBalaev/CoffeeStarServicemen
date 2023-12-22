@@ -77,6 +77,82 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
             numberCar = "b952 0023",
             listFilling = listOf(),
             listError = listOf(), address = "Т/Ц «Авиапарк» 4", distance = "3,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0024",
+            listFilling = listOf(
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    color = R.color.yellow_D8B431
+                )
+            ),
+            listError = listOf(), address = "Т/Ц «Авиапарк» 5", distance = "5,5 км",time = "8:00"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_offline,
+            numberCar = "b952 0025",
+            listFilling = listOf(
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_basic_2, listText = listOf(
+                        "Молоко","Матча","Какао","Горячий шоколад","Сироп из клубники","Сироп из малины"
+                    ),
+                    color = R.color.red_E03F36
+                ),
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    color = R.color.yellow_D8B431
+                )
+            ),
+            listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error","Slideway №4 error 2"),
+            address = "Т/Ц «Авиапарк» 6", distance = "6,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_offline,
+            numberCar = "b952 0026",
+            listFilling = listOf(),
+            listError = listOf(), address = "Т/Ц «Авиапарк» 7", distance = "7,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0027",
+            listFilling = listOf(),
+            listError = listOf(), address = "Т/Ц «Авиапарк» 8", distance = "8,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_online,
+            numberCar = "b952 0028",
+            listFilling = listOf(
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    color = R.color.yellow_D8B431
+                )
+            ),
+            listError = listOf(), address = "Т/Ц «Авиапарк» 9", distance = "9,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_offline,
+            numberCar = "b952 0029",
+            listFilling = listOf(
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_basic_2, listText = listOf(
+                        "Молоко","Матча","Какао","Горячий шоколад","Сироп из клубники","Сироп из малины"
+                    ),
+                    color = R.color.red_E03F36
+                ),
+                ItemFillingModel(
+                    image = R.drawable.ic_canister_filling_medium, listText = listOf("Сахар","Кофейные бобы"),
+                    color = R.color.yellow_D8B431
+                )
+            ),
+            listError = listOf("Slideway №4 error","Drop lid error","Slideway №4 error","Slideway №4 error 2"),
+            address = "Т/Ц «Авиапарк» 10", distance = "10,5 км"
+        ),
+        ItemCarModel(
+            imageSignalStatus = R.drawable.ic_signal_offline,
+            numberCar = "b952 0030",
+            listFilling = listOf(),
+            listError = listOf(), address = "Т/Ц «Авиапарк» 11", distance = "11,5 км"
         )
     )
 

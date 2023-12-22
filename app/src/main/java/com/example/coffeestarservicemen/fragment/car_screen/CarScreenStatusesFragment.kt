@@ -48,11 +48,6 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
                         percent = 89
                     ),
                     ItemCardStatusModel(
-                        image = R.drawable.ic_canister_filling_medium,
-                        name = "Чай-латте",
-                        percent = 12
-                    ),
-                    ItemCardStatusModel(
                         image = R.drawable.ic_canister_max,
                         name = "Шоколад",
                         percent = 84
@@ -114,11 +109,6 @@ class CarScreenStatusesFragment : Fragment(R.layout.fragment_car_screen_statuses
                     ItemCardStatusModel(
                         image = R.drawable.ic_canister_max,
                         name = "Карамельный",
-                        percent = 23
-                    ),
-                    ItemCardStatusModel(
-                        image = R.drawable.ic_canister_max,
-                        name = "Малиновый",
                         percent = 23
                     ),
                     ItemCardStatusModel(
